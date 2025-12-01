@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ear care</title>
+    <link href="https://fonts.googleapis.com/css2?family=eczar:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        :root {
+            --brand-primary: #8f1113;
+            --brand-secondary: #cf5a4d;
+            --brand-light: #f8d2c8;
+            --brand-muted: #f5caa5;
+            --brand-accent: #1a1a1a;
+        }
+
+        .bg-brand-primary {
+            background-color: var(--brand-primary);
+        }
+
+        .bg-brand-secondary {
+            background-color: var(--brand-secondary);
+        }
+
+        .bg-brand-light {
+            background-color: var(--brand-light);
+        }
+
+        .bg-brand-muted {
+            background-color: var(--brand-muted);
+        }
+
+        .bg-brand-accent {
+            background-color: var(--brand-accent);
+        }
+
+        .text-brand-primary {
+            color: var(--brand-primary);
+        }
+
+        .text-brand-secondary {
+            color: var(--brand-secondary);
+        }
+
+        .text-brand-light {
+            color: var(--brand-light);
+        }
+
+        .text-brand-muted {
+            color: var(--brand-muted);
+        }
+
+        .text-brand-accent {
+            color: var(--brand-accent);
+        }
+
+        .border-brand-primary {
+            border-color: var(--brand-primary);
+        }
+
+        .border-brand-secondary {
+            border-color: var(--brand-secondary);
+        }
+
+        .border-brand-light {
+            border-color: var(--brand-light);
+        }
+
+        .border-brand-muted {
+            border-color: var(--brand-muted);
+        }
+
+        .border-brand-accent {
+            border-color: var(--brand-accent);
+        }
+
+        .font-eczar {
+            font-family: 'Eczar', serif;
+        }
+
+        /* FAQ Styles */
+        .faq-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(248, 210, 200, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .faq-item:hover::before {
+            left: 100%;
+        }
+
+        .faq-active {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(248, 210, 200, 0.6) !important;
+        }
+
+        .faq-question {
+            position: relative;
+            z-index: 2;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .faq-answer.show {
+            max-height: 200px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faq-icon {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-active .faq-icon {
+            transform: rotate(45deg);
+            color: #cf5a4d;
+        }
+
+        /* Animated elements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .faq-item {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .faq-item:nth-child(1) { animation-delay: 0.1s; }
+        .faq-item:nth-child(2) { animation-delay: 0.2s; }
+        .faq-item:nth-child(3) { animation-delay: 0.3s; }
+        .faq-item:nth-child(4) { animation-delay: 0.4s; }
+        .faq-item:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Pulse effect for emojis */
+        @keyframes emojiPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .faq-question:hover span:first-child {
+            animation: emojiPulse 0.6s ease-in-out;
+        }
+
+        /* Success Story Styles */
+        .success-story-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            border: 1px solid rgba(248, 210, 200, 0.3);
+        }
+
+        .success-story-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .quote-text {
+            font-style: italic;
+            line-height: 1.6;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        .customer-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(248, 210, 200, 0.2);
+        }
+
+        .customer-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--brand-light);
+        }
+
+        .customer-details h4 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--brand-primary);
+        }
+
+        .customer-details p {
+            margin: 4px 0 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .result-stats {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--brand-secondary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* Trust indicators animation */
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-story-card .text-2xl {
+            animation: countUp 0.8s ease forwards;
+        }
+
+        /* Simple star rating */
+        .star-rating {
+            color: #fbbf24;
+            font-size: 16px;
+        }
+
+        /* Verified badge */
+        .verified-badge {
+            background: var(--brand-secondary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Purchase Notification System */
+        .notification-container {
+            position: fixed;
+            left: 20px;
+            bottom: 120px;
+            z-index: 1000;
+            width: 300px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 1s ease-in-out;
+        }
+
+        .notification-container.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification-container.hide {
+            transform: translateY(100px);
+            opacity: 0;
+        }
+
+        .notification-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left: 4px solid var(--brand-secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(248, 210, 200, 0.3);
+        }
+
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--brand-secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .notification-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .notification-name {
+            font-weight: bold;
+            color: var(--brand-primary);
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .notification-city {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .notification-message {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.3;
+        }
+
+        .notification-badge {
+            background: #10b981;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 500;
+            align-self: flex-start;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 450px) {
+            .notification-container {
+                left: 10px;
+                width: calc(100% - 20px);
+                max-width: 280px;
+                bottom: 140px;
+            }
+            
+            .notification-card {
+                padding: 12px;
+            }
+            
+            .notification-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    <style>
+        body {
+            scroll-behavior: smooth;
+            font-weight: 400;
+            /* Space for fixed CTA */
+        }
+
+        /* Container width control */
+        .main-container {
+            max-width: 450px;
+            margin: 0 auto;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 450px) {
+            .main-container {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Creative Logo Styles */
+        .creative-logo {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #d15b4d 0%, #912a25 100%);
+            border-radius: 50%;
+            overflow: visible;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Only apply hover effects on devices that support hover */
+        @media (hover: hover) and (pointer: fine) {
+            .creative-logo:hover {
+                transform: scale(1.1) rotate(12deg);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            }
+            
+            .creative-logo:hover .wave {
+                animation-duration: 1s;
+            }
+            
+            .creative-logo:hover .sound-waves::after {
+                content: '';
+                position: absolute;
+                left: -25px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 20px;
+                height: 2px;
+                background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.6));
+                animation: soundTrail 1s ease-out infinite;
+            }
+            
+            .creative-logo:hover .logo-tooltip {
+                opacity: 1;
+            }
+        }
+
+        .creative-logo:active {
+            transform: scale(1.05);
+        }
+
+        .creative-logo:focus {
+            outline: none;
+        }
+
+        .ear-symbol {
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .sound-waves {
+            position: absolute;
+            right: -35px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            z-index: 1;
+            width: 40px;
+            height: 30px;
+        }
+
+        .wave {
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.9));
+            border-radius: 1px;
+            animation: soundWaveFlow 2s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        .wave:nth-child(1) {
+            height: 6px;
+            animation-delay: 0s;
+        }
+
+        .wave:nth-child(2) {
+            height: 10px;
+            animation-delay: 0.1s;
+        }
+
+        .wave:nth-child(3) {
+            height: 14px;
+            animation-delay: 0.2s;
+        }
+
+        .wave:nth-child(4) {
+            height: 10px;
+            animation-delay: 0.3s;
+        }
+
+        .wave:nth-child(5) {
+            height: 6px;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes soundWaveFlow {
+            0% {
+                opacity: 0.2;
+                transform: scaleY(0.3) translateX(-5px);
+            }
+
+            30% {
+                opacity: 0.8;
+                transform: scaleY(1) translateX(0px);
+            }
+
+            70% {
+                opacity: 1;
+                transform: scaleY(1.2) translateX(5px);
+            }
+
+            100% {
+                opacity: 0.1;
+                transform: scaleY(0.2) translateX(15px);
+            }
+        }
+
+        /* Enhanced sound wave effect on hover - moved to media query above */
+
+        @keyframes soundTrail {
+            0% {
+                width: 0px;
+                opacity: 0;
+            }
+
+            50% {
+                width: 15px;
+                opacity: 0.8;
+            }
+
+            100% {
+                width: 25px;
+                opacity: 0;
+            }
+        }
+
+        .logo-tooltip {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--brand-primary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .brand-text-enhanced {
+            background: linear-gradient(45deg, #ffffff, #f8f8f8, #ffffff, #e8e8e8, #ffffff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: enhancedTextShimmer 4s ease-in-out infinite;
+            position: relative;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        @keyframes enhancedTextShimmer {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 50% 25%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            75% {
+                background-position: 50% 75%;
+            }
+        }
+
+        .brand-text-enhanced::after {
+            content: '👂🔊';
+            position: absolute;
+            top: -5px;
+            right: -25px;
+            font-size: 0.6em;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-2px) scale(1.1);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans leading-relaxed bg-brand-light text-brand-accent">
+    <div class=" w-full main-container">
+        <!-- Header -->
+        <header
+            class="bg-brand-primary border-b-2 border-brand-light text-brand-secondary p-4 flex justify-between items-center gap-6 max-[450px]:p-5 max-[450px]:px-4 max-[450px]:gap-4">
+                        <div class="flex items-center justify-center gap-4 max-[450px]:gap-3 flex-1">
+                            <div class="w-full flex flex-col items-center justify-center"
+                                style="background-color:rgba(248,210,200,0.2); border-radius: 15px; padding: 8px 16px; backdrop-filter: blur(10px); border: 2px solid rgba(248,210,200,0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                                <div class="flex flex-row items-center justify-center gap-4 max-[450px]:gap-3">
+                                    <div
+                                        class="creative-logo glow-border w-14 h-14 rounded-full flex items-center justify-center shadow-brand border-2 border-brand-light border-opacity-30 overflow-visible max-[450px]:w-12 max-[450px]:h-12">
+                                        <span class="ear-symbol">👂</span>
+                                        <div class="sound-waves">
+                                            <div class="wave"></div>
+                                            <div class="wave"></div>
+                                            <div class="wave"></div>
+                                            <div class="wave"></div>
+                                            <div class="wave"></div>
+                                        </div>
+                                    </div>
+                                    <div class="font-eczar text-xl font-bold max-[450px]:text-2xl cursor-default text-white drop-shadow-lg text-center leading-tight transition-transform duration-300">
+                                        <div class="flex items-center justify-center gap-2 max-[450px]:gap-1 hover:scale-105">
+                                            <span class="whitespace-nowrap text-white">Ear</span>
+                                            <span class="whitespace-nowrap text-white">Care</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            <button
+                class="bg-brand-secondary text-white font-bold border-none px-6 py-3 rounded-lg text-xl cursor-pointer transition-all duration-300 hover:bg-opacity-80 max-[450px]:text-xl max-[450px]:px-4 max-[450px]:py-3 flex-shrink-0"
+                onclick="scrollToContact()">
+                <span class="relative z-10 "> 🛒 ऑर्डर करें
+                </span>
+            </button>
+        </header>
+        <!-- Main Content -->
+        <main class="bg-brand-primary">
+
+            <!-- Contact Section -->
+            <section class="px-4 py-4 bg-brand-primary text-white border-b-2 border-brand-light max-[450px]:py-6 max-[450px]:px-3" id="contact">
+                <form id="contactForm">
+                    <div class="mb-4 max-[450px]:mb-3">
+                        <label for="name"
+                            class="block mb-2 text-xl text-white font-eczar font-semibold max-[450px]:text-lg max-[450px]:mb-1">आपका
+                            नाम:</label>
+                        <input type="text" id="name" name="name" required placeholder="अपना नाम लिखें"
+                            class="w-full p-3 border-none rounded text-lg text-brand-primary placeholder-brand-muted font-eczar max-[450px]:p-2 max-[450px]:text-base bg-brand-light">
+                    </div>
+                    <div class="mb-4 max-[450px]:mb-3">
+                        <label for="phone"
+                            class="block mb-2 text-xl text-white font-eczar font-semibold max-[450px]:text-lg max-[450px]:mb-1">फोन
+                            नंबर:</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="अपना फोन नंबर लिखें"
+                            class="w-full p-3 border-none rounded text-lg text-brand-primary placeholder-brand-muted font-eczar max-[450px]:p-2 max-[450px]:text-base bg-brand-light">
+                    </div>
+                    <button type="submit"
+                        class="bg-brand-secondary text-brand-accent font-bold border-none py-4 px-8 rounded text-2xl font-eczar cursor-pointer w-full mt-4 transition-all duration-300 hover:bg-opacity-90 max-[450px]:py-3 max-[450px]:px-4 max-[450px]:text-xl max-[450px]:mt-3"
+                        onclick="showThankYou()">
+                        <span>✨</span>
+                        अभी ऑर्डर करें
+                        <span>✨</span>
+                    </button>
+                </form>
+            </section>
+
+
+
+        </main>
+
+        <footer
+            class="bg-brand-primary text-white py-4 px-4 text-center max-[450px]:py-4 max-[450px]:px-3 pb-28 max-[450px]:pb-32">
+            <div class="text-sm text-white mt-4 font-eczar max-[450px]:text-xs max-[450px]:mt-2">
+                <p><strong class="font-eczar font-semibold">⚠️ Disclaimer :-</strong>This product is not intended to
+                    diagnose, treat, cure, or prevent any disease. Results may vary from person to person. Always
+                    consult with a qualified healthcare professional before starting any new supplement.</p>
+            </div>
+        </footer>
+
+        <!-- Thank You Modal -->
+        <div id="thankYouModal" class="hidden fixed top-0 left-0 w-full h-full z-50 flex items-center justify-center"
+            style="background-color:rgba(248,210,200,0.2); border-radius: 15px; padding: 8px 16px; backdrop-filter: blur(10px); border: 2px solid rgba(248,210,200,0.3); box-shadow: 0 8px 25px rgba(0, 0, 0, 0);">
+            <div
+                class="bg-brand-light p-8 rounded-lg text-center max-w-sm mx-4 max-[450px]:p-6 max-[450px]:max-w-xs border-2 border-brand-secondary">
+                <h2 class="text-brand-primary mb-4 text-2xl font-eczar font-bold max-[450px]:text-xl max-[450px]:mb-3">
+                    धन्यवाद!</h2>
+                <p class="text-xl mb-6 font-eczar font-medium max-[450px]:text-lg max-[450px]:mb-4 text-brand-accent">
+                    हमने
+                    आपकी
+                    जानकारी
+                    प्राप्त कर ली है और आपकी
+                    मुफ्त सलाह निर्धारित करने के लिए 24 घंटे के भीतर आपसे संपर्क करेंगे।</p>
+            </div>
+        </div>
+
+        <!-- Fixed CTA Form at Bottom -->
+        <div id="fixedCTA"
+            class="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-50 bg-brand-primary shadow-2xl w-[450px] border-t-4 border-brand-secondary">
+            <div class="px-4 py-2 w-full max-[450px]:px-6 max-w-screen-xl mx-auto">
+                <!-- Main Content: Horizontal Layout -->
+                <div class="grid grid-cols-2 gap-3 max-[450px]:gap-5">
+                    <!-- Left Side: Promotional Points -->
+                    <div class="flex-1  gap-2 min-w-0">
+                        <ul class="text-white text-sm font-eczar font-bold space-y-2 max-[450px]:text-sm">
+                            <li class="flex items-center gap-1.5">
+                                <span class="truncate">🔥 Today Offer</span>
+                            </li>
+                            <li class="flex items-center gap-1.5">
+                                <span class="truncate">📊 Diet Chart</span>
+                            </li>
+                            <li class="flex items-center gap-1.5">
+                                <span class="truncate">💰 COD Available</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Center: Offer Badge
+                    <div
+                        class="animate-bounce text-lg font-bold text-white bg-brand-secondary px-3 shadow-lg text-center flex items-center font-eczar whitespace-nowrap max-[450px]:text-lg max-[450px]:px-2">
+                        🎉 10% OFF
+                    </div> -->
+
+                    <!-- Right Side: Timer & Button -->
+                    <div class="flex items-center flex-col gap-3 max-[450px]:gap-2">
+                        <!-- Countdown Timer -->
+                        <div class="text-center">
+                            <div id="countdown"
+                                class="text-white text-lg max-[450px]:text-lg font-extrabold font-eczar whitespace-nowrap">
+                                00:00:00
+                            </div>
+                        </div>
+                        <!-- Order Button -->
+                        <button id="ctaButton" onclick="scrollToContact()"
+                            class="bg-brand-secondary text-white px-3 py-2 rounded-lg font-eczar font-bold text-sm transition-all duration-300 shadow-lg hover:scale-105 whitespace-nowrap max-[450px]:text-lg max-[450px]:px-2 max-[450px]:py-1.5"
+                            onclick="scrollToContact()">
+                            🛒 Order Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Purchase Notification System -->
+        <div id="purchaseNotification" class="notification-container">
+            <div class="notification-card">
+                <div id="notificationIcon" class="notification-icon">R</div>
+                <div class="notification-content">
+                    <div id="notificationName" class="notification-name">रमेश कुमार</div>
+                    <div id="notificationCity" class="notification-city">दिल्ली</div>
+                    <div id="notificationMessage" class="notification-message">ने अपने पिता के लिए यह प्रोडक्ट खरीदा</div>
+                </div>
+                <div class="notification-badge">खरीदा</div>
+            </div>
+        </div>
+
+    </div>
+    <script src="./data.js"></script>
+    <script>
+        // Notification system variables
+        let currentNotificationIndex = 0;
+        let notificationInterval;
+        
+        // Product purchase notifications data (fallback if data.js not loaded)
+        const fallbackNotifications = [
+            { name: 'रमेश कुमार', city: 'दिल्ली', message: 'ने अपने पिता के लिए यह प्रोडक्ट खरीदा', icon: 'R' },
+            { name: 'सुनीता देवी', city: 'मुंबई', message: 'ने अपने कान की समस्या के लिए यह प्रोडक्ट खरीदा', icon: 'S' },
+            { name: 'राज शर्मा', city: 'पुणे', message: 'ने अपनी माँ के लिए यह प्रोडक्ट खरीदा', icon: 'R' },
+            { name: 'प्रिया गुप्ता', city: 'जयपुर', message: 'ने कान की आवाज़ की समस्या के लिए यह प्रोडक्ट खरीदा', icon: 'P' },
+            { name: 'अमित कुमार', city: 'लखनऊ', message: 'ने अपने दादाजी के लिए यह प्रोडक्ट खरीदा', icon: 'A' },
+            { name: 'मीरा पटेल', city: 'अहमदाबाद', message: 'ने सुनने की समस्या के लिए यह प्रोडक्ट खरीदा', icon: 'M' },
+            { name: 'विकास सिंह', city: 'भोपाल', message: 'ने अपनी पत्नी के लिए यह प्रोडक्ट खरीदा', icon: 'V' },
+            { name: 'अनिता शर्मा', city: 'चंडीगढ़', message: 'ने कान के दर्द के लिए यह प्रोडक्ट खरीदा', icon: 'A' },
+            { name: 'संजय गुप्ता', city: 'इंदौर', message: 'ने अपने भाई के लिए यह प्रोडक्ट खरीदा', icon: 'S' },
+            { name: 'रीता देवी', city: 'कानपुर', message: 'ने सुनाई न देने की समस्या के लिए यह प्रोडक्ट खरीदा', icon: 'R' }
+        ];
+
+        // Get notifications data (from external file or fallback)
+        const getNotifications = () => {
+            try {
+                return window.notifications || fallbackNotifications;
+            } catch {
+                return fallbackNotifications;
+            }
+        };
+
+        // Show notification function
+        function showNotification() {
+            const notifications = getNotifications();
+            const notification = notifications[currentNotificationIndex];
+            
+            // Update notification content
+            document.getElementById('notificationIcon').textContent = notification.icon;
+            document.getElementById('notificationName').textContent = notification.name;
+            document.getElementById('notificationCity').textContent = notification.city;
+            document.getElementById('notificationMessage').textContent = notification.message;
+            
+            const notificationContainer = document.getElementById('purchaseNotification');
+            
+            // Show notification with animation (1s up)
+            notificationContainer.classList.remove('hide');
+            notificationContainer.classList.add('show');
+            
+            // Hide notification after display time (1s up + 2s display + 1s down = 4s total)
+            setTimeout(() => {
+                notificationContainer.classList.remove('show');
+                notificationContainer.classList.add('hide');
+            }, 3000); // 1s animation + 2s display
+            
+            // Move to next notification
+            currentNotificationIndex = (currentNotificationIndex + 1) % notifications.length;
+        }
+
+        // Initialize notification system
+        function initNotificationSystem() {
+            // Show first notification after 2 seconds
+            setTimeout(() => {
+                showNotification();
+                
+                // Set interval to show notifications every 5 seconds
+                notificationInterval = setInterval(showNotification, 5000);
+            }, 2000);
+        }
+        function showThankYou() {
+            // Process and fill form data
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+
+            // Validate form data
+            if (!name || !phone) {
+                alert('कृपया सभी फील्ड भरें!');
+                return false;
+            }
+
+            // Process the data (you can modify this part as needed)
+            const formData = {
+                customerName: name,
+                phoneNumber: phone,
+                timestamp: new Date().toLocaleString('hi-IN'),
+                product: 'Mirgi Mukti'
+            };
+
+            // Fill/store the processed data (example: console log or local storage)
+            console.log('Form Data Processed:', formData);
+            localStorage.setItem('customerOrder', JSON.stringify(formData));
+
+            // Show thank you modal if it exists, otherwise show alert
+            const modal = document.getElementById('thankYouModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                // Auto close after 3 seconds
+                setTimeout(() => {
+                    closeModal();
+                }, 20000);
+            } else {
+                // Fallback alert with processed data
+                alert(`धन्यवाद ${name}! आपका ऑर्डर सफलतापूर्वक सबमिट हो गया है। हमारी टीम जल्द ही ${phone} पर आपसे संपर्क करेगी।`);
+                document.getElementById('contactForm').reset();
+            }
+
+            return true;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('thankYouModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+            document.getElementById('contactForm').reset();
+        }
+
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Countdown Timer Function
+        function updateCountdown() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0); // Set to midnight
+
+            const timeRemaining = tomorrow - now;
+
+            const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            const formattedTime =
+                String(hours).padStart(2, '0') + ':' +
+                String(minutes).padStart(2, '0') + ':' +
+                String(seconds).padStart(2, '0');
+
+            const countdownElement = document.getElementById('countdown');
+            if (countdownElement) {
+                countdownElement.textContent = formattedTime;
+            }
+        }
+
+        // Start countdown on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCountdown();
+            setInterval(updateCountdown, 1000); // Update every second
+            
+            // Initialize notification system
+            initNotificationSystem();
+
+            // FAQ Accordion Functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function () {
+                    const faqItem = this.parentElement;
+                    const answer = faqItem.querySelector('.faq-answer');
+                    const icon = this.querySelector('.faq-icon');
+
+                    // Close all other open FAQ items
+                    faqQuestions.forEach(otherQuestion => {
+                        if (otherQuestion !== question) {
+                            const otherItem = otherQuestion.parentElement;
+                            const otherAnswer = otherItem.querySelector('.faq-answer');
+                            const otherIcon = otherQuestion.querySelector('.faq-icon');
+
+                            otherAnswer.classList.remove('show');
+                            setTimeout(() => {
+                                otherAnswer.classList.add('hidden');
+                            }, 400);
+                            otherIcon.textContent = '+';
+                            otherItem.classList.remove('faq-active');
+                        }
+                    });
+
+                    // Toggle current FAQ item
+                    if (answer.classList.contains('show')) {
+                        // Close current
+                        answer.classList.remove('show');
+                        setTimeout(() => {
+                            answer.classList.add('hidden');
+                        }, 400);
+                        icon.textContent = '+';
+                        faqItem.classList.remove('faq-active');
+                    } else {
+                        // Open current
+                        answer.classList.remove('hidden');
+                        setTimeout(() => {
+                            answer.classList.add('show');
+                        }, 10);
+                        icon.textContent = '−';
+                        faqItem.classList.add('faq-active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
