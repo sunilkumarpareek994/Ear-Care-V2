@@ -288,10 +288,10 @@
         /* Purchase Notification System */
         .notification-container {
             position: fixed;
-            left: 20px;
+            left: 10px;
             bottom: 120px;
             z-index: 1000;
-            width: 300px;
+            width: 350px;
             transform: translateY(100px);
             opacity: 0;
             transition: all 1s ease-in-out;
@@ -308,30 +308,102 @@
         }
 
         .notification-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            background: var(--brand-light);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
             border-left: 4px solid var(--brand-secondary);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(248, 210, 200, 0.3);
+            border: 2px solid white;
         }
 
-        .notification-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--brand-secondary);
-            color: white;
+        .notification-logo {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 16px;
+            background: linear-gradient(135deg, #d15b4d 0%, #912a25 100%);
+            border-radius: 50%;
+            overflow: visible;
+            transition: transform 0.3s ease;
             flex-shrink: 0;
+        }
+
+        .notification-logo.show-animation {
+            animation: slowRotateY 3s ease-in-out;
+        }
+
+        @keyframes slowRotateY {
+            0% {
+                transform: rotateY(0deg);
+            }
+            25% {
+                transform: rotateY(25deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+            75% {
+                transform: rotate(25deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .notification-logo .ear-symbol {
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .notification-logo .sound-waves {
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            z-index: 1;
+            width: 30px;
+            height: 24px;
+        }
+
+        .notification-logo .wave {
+            width: 1.5px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.9));
+            border-radius: 1px;
+            animation: soundWaveFlow 2s ease-in-out infinite;
+        }
+
+        .notification-logo .wave:nth-child(1) {
+            height: 4px;
+            animation-delay: 0s;
+        }
+
+        .notification-logo .wave:nth-child(2) {
+            height: 7px;
+            animation-delay: 0.1s;
+        }
+
+        .notification-logo .wave:nth-child(3) {
+            height: 10px;
+            animation-delay: 0.2s;
+        }
+
+        .notification-logo .wave:nth-child(4) {
+            height: 7px;
+            animation-delay: 0.3s;
+        }
+
+        .notification-logo .wave:nth-child(5) {
+            height: 4px;
+            animation-delay: 0.4s;
         }
 
         .notification-content {
@@ -341,50 +413,72 @@
 
         .notification-name {
             font-weight: bold;
-            color: var(--brand-primary);
-            font-size: 14px;
-            margin-bottom: 2px;
+            color: -var(--brand-accent);
+            font-size: 16px;
+            margin-bottom: 3px;
         }
 
         .notification-city {
-            font-size: 11px;
-            color: #666;
-            margin-bottom: 4px;
+            font-size: 13px;
+            color: -var(--brand-accent);
+            opacity: 0.9;
+            margin-bottom: 5px;
         }
 
         .notification-message {
-            font-size: 12px;
-            color: #555;
-            line-height: 1.3;
+            font-size: 14px;
+            color: -var(--brand-accent);
+            line-height: 1.4;
         }
 
         .notification-badge {
             background: #10b981;
             color: white;
-            padding: 2px 6px;
-            border-radius: 10px;
-            font-size: 10px;
-            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
             align-self: flex-start;
         }
 
         /* Mobile responsive */
         @media (max-width: 450px) {
             .notification-container {
-                left: 10px;
-                width: calc(100% - 20px);
-                max-width: 280px;
+                left: 5px;
+                width: calc(100% - 15px);
+                max-width: 320px;
                 bottom: 140px;
             }
             
             .notification-card {
-                padding: 12px;
+                padding: 16px;
             }
             
-            .notification-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 14px;
+            .notification-logo {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .notification-logo .ear-symbol {
+                font-size: 1rem;
+            }
+            
+            .notification-logo .sound-waves {
+                right: -20px;
+                width: 25px;
+                height: 20px;
+            }
+            
+            .notification-name {
+                font-size: 15px;
+            }
+            
+            .notification-city {
+                font-size: 12px;
+            }
+            
+            .notification-message {
+                font-size: 13px;
             }
         }
     </style>
@@ -664,7 +758,281 @@
         </header>
         <!-- Main Content -->
         <main class="bg-brand-primary">
+            <!-- FAQ Section -->
+            <section class="px-4 py-8 bg-gradient-to-b from-brand-primary to-brand-secondary border-b-2 border-brand-light text-white max-[450px]:py-6 max-[450px]:px-3">
+                <div class="text-center mb-8 max-[450px]:mb-6">
+                    <h2 class="text-3xl font-eczar font-bold mb-3 max-[450px]:text-2xl max-[450px]:mb-2 text-white">
+                        <span class="inline-block animate-pulse">💬</span>
+                        FAQ — अक्सर पूछे जाने वाले सवाल
+                        <span class="inline-block animate-pulse">💬</span>
+                    </h2>
+                    <p class="text-lg font-eczar text-white max-[450px]:text-base">
+                        आपके सवालों के जवाब यहाँ हैं
+                    </p>
+                </div>
 
+                <div class="space-y-4 max-w-2xl mx-auto">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item bg-brand-muted bg-opacity-10 rounded-xl border-2 border-brand-light border-opacity-30 overflow-hidden transition-all duration-500 hover:bg-opacity-20 hover:scale-105 backdrop-blur-sm">
+                        <div class="faq-question cursor-pointer p-4 flex justify-between items-center hover:bg-brand-muted hover:bg-opacity-10 transition-all duration-300 max-[450px]:p-3">
+                            <div class="flex items-center gap-3 max-[450px]:gap-2">
+                                <span class="text-2xl animate-bounce max-[450px]:text-xl">🌿</span>
+                                <span class="text-lg font-eczar font-semibold max-[450px]:text-base text-brand-accent">
+                                    क्या ये 100% आयुर्वेदिक और सुरक्षित है?
+                                </span>
+                            </div>
+                            <span class="faq-icon text-3xl font-bold transition-transform duration-300 max-[450px]:text-2xl text-white">+</span>
+                        </div>
+                        <div class="faq-answer hidden bg-brand-light bg-opacity-20 p-4 border-t border-white border-opacity-20 transition-all duration-500 max-[450px]:p-3">
+                            <div class="flex items-center gap-3 max-[450px]:gap-2">
+                                <span class="text-2xl max-[450px]:text-xl">✅</span>
+                                <span class="text-lg font-eczar font-medium text-brand-accent max-[450px]:text-base">
+                                    हाँ, पूरी तरह सुरक्षित है।
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item bg-brand-muted bg-opacity-10 rounded-xl border-2 border-brand-light border-opacity-30 overflow-hidden transition-all duration-500 hover:bg-opacity-20 hover:scale-105 backdrop-blur-sm">
+                        <div class="faq-question cursor-pointer p-4 flex justify-between items-center hover:bg-brand-muted hover:bg-opacity-10 transition-all duration-300 max-[450px]:p-3">
+                            <div class="flex items-center gap-3 max-[450px]:gap-2">
+                                <span class="text-2xl animate-pulse max-[450px]:text-xl">⏰</span>
+                                <span class="text-lg font-eczar font-semibold max-[450px]:text-base text-brand-accent">
+                                    कितना समय लगेगा असर दिखने में?
+                                </span>
+                            </div>
+                            <span class="faq-icon text-3xl font-bold transition-transform duration-300 max-[450px]:text-2xl text-white">+</span>
+                        </div>
+                        <div class="faq-answer hidden bg-brand-light bg-opacity-20 p-4 border-t border-white border-opacity-20 transition-all duration-500 max-[450px]:p-3">
+                            <div class="flex items-center gap-3 max-[450px]:gap-2">
+                                <span class="text-2xl max-[450px]:text-xl">📈</span>
+                                <span class="text-lg font-eczar font-medium text-brand-accent max-[450px]:text-base">
+                                    15–30 दिन में फर्क दिखता है।
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item bg-brand-muted bg-opacity-10 rounded-xl border-2 border-brand-light border-opacity-30 overflow-hidden transition-all duration-500 hover:bg-opacity-20 hover:scale-105 backdrop-blur-sm">
+                        <div class="faq-question cursor-pointer p-4 flex justify-between items-center hover:bg-brand-muted hover:bg-opacity-10 transition-all duration-300 max-[450px]:p-3">
+                            <div class="flex items-center gap-3 max-[450px]:gap-2">
+                                <span class="text-2xl animate-bounce max-[450px]:text-xl">👴</span>
+                                <span class="text-lg font-eczar font-semibold max-[450px]:text-base text-brand-accent">
+                                    क्या बुजुर्ग लोग ले सकते हैं?
+                                </span>
+                            </div>
+                            <span class="faq-icon text-3xl font-bold transition-transform duration-300 max-[450px]:text-2xl text-white">+</span>
+                        </div>
+                        <div class="faq-answer hidden bg-brand-light bg-opacity-20 p-4 border-t border-white border-opacity-20 transition-all duration-500 max-[450px]:p-3">
+                            <div class="flex items-center gap-3 max-[450px]:gap-2">
+                                <span class="text-2xl max-[450px]:text-xl">👍</span>
+                                <span class="text-lg font-eczar font-medium text-brand-accent max-[450px]:text-base">
+                                    हाँ, बिल्कुल ले सकते हैं।
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item bg-brand-muted bg-opacity-10 rounded-xl border-2 border-brand-light border-opacity-30 overflow-hidden transition-all duration-500 hover:bg-opacity-20 hover:scale-105 backdrop-blur-sm">
+                        <div class="faq-question cursor-pointer p-4 flex justify-between items-center hover:bg-brand-muted hover:bg-opacity-10 transition-all duration-300 max-[450px]:p-3">
+                            <div class="flex items-center gap-3 max-[450px]:gap-2">
+                                <span class="text-2xl animate-pulse max-[450px]:text-xl">🎧</span>
+                                <span class="text-lg font-eczar font-semibold max-[450px]:text-base text-brand-accent">
+                                    क्या इयरफोन से हुई समस्या में भी फायदेमंद है?
+                                </span>
+                            </div>
+                            <span class="faq-icon text-3xl font-bold transition-transform duration-300 max-[450px]:text-2xl text-white">+</span>
+                        </div>
+                        <div class="faq-answer hidden bg-brand-light bg-opacity-20 p-4 border-t border-white border-opacity-20 transition-all duration-500 max-[450px]:p-3">
+                            <div class="flex items-center gap-3 max-[450px]:gap-2">
+                                <span class="text-2xl max-[450px]:text-xl">💪</span>
+                                <span class="text-lg font-eczar font-medium text-brand-accent max-[450px]:text-base">
+                                    हाँ, अंदरूनी नसों को support करता है।
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item bg-brand-muted bg-opacity-10 rounded-xl border-2 border-brand-light border-opacity-30 overflow-hidden transition-all duration-500 hover:bg-opacity-20 hover:scale-105 backdrop-blur-sm">
+                        <div class="faq-question cursor-pointer p-4 flex justify-between items-center hover:bg-brand-muted hover:bg-opacity-10 transition-all duration-300 max-[450px]:p-3">
+                            <div class="flex items-center gap-3 max-[450px]:gap-2">
+                                <span class="text-2xl animate-bounce max-[450px]:text-xl">💰</span>
+                                <span class="text-lg font-eczar font-semibold max-[450px]:text-base text-brand-accent">
+                                    COD मिलता है?
+                                </span>
+                            </div>
+                            <span class="faq-icon text-3xl font-bold transition-transform duration-300 max-[450px]:text-2xl text-white">+</span>
+                        </div>
+                        <div class="faq-answer hidden bg-brand-light bg-opacity-20 p-4 border-t border-white border-opacity-20 transition-all duration-500 max-[450px]:p-3">
+                            <div class="flex items-center gap-3 max-[450px]:gap-2">
+                                <span class="text-2xl max-[450px]:text-xl">🚚</span>
+                                <span class="text-lg font-eczar font-medium text-brand-accent max-[450px]:text-base">
+                                    हाँ, Cash on Delivery उपलब्ध है।
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action after FAQ -->
+                <div class="text-center mt-8 max-[450px]:mt-6">
+                    <div class="bg-brand-secondary bg-opacity-20 rounded-xl p-6 backdrop-blur-sm border-2 border-brand-light border-opacity-30 max-[450px]:p-4">
+                        <p class="text-xl font-eczar font-semibold mb-4 max-[450px]:text-lg max-[450px]:mb-3 text-white">
+                            <span class="animate-pulse">💡</span>
+                            अभी भी कोई सवाल है?
+                            <span class="animate-pulse">💡</span>
+                        </p>
+                        <button onclick="scrollToContact()" 
+                            class="bg-brand-primary text-white font-bold px-8 py-3 rounded-lg text-lg font-eczar transition-all duration-300 transform hover:scale-105 shadow-lg max-[450px]:px-6 max-[450px]:py-2 max-[450px]:text-base">
+                            <span class="animate-bounce inline-block">📞</span>
+                            अभी संपर्क करें
+                            <span class="animate-bounce inline-block">  📞</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+                        <!-- Success Stories Section -->
+            <section class="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
+                <div class="text-center mb-8 max-[450px]:mb-6">
+                    <h2 class="text-3xl font-eczar font-bold mb-3 max-[450px]:text-2xl max-[450px]:mb-2 text-white">
+                        <span class="inline-block animate-bounce">⭐</span>
+                        सफलता की कहानियाँ
+                        <span class="inline-block animate-bounce">⭐</span>
+                    </h2>
+                    <p class="text-lg font-eczar text-white max-[450px]:text-base">
+                        हजारों लोगों ने पाई है राहत
+                    </p>
+                </div>
+
+                <div class="space-y-6 max-w-2xl mx-auto">
+                    <!-- Success Story 1 - Female -->
+                    <div class="success-story-card p-6 max-[450px]:p-4">
+                        <div class="testimonial-content">
+                            <!-- Rating and verification -->
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="star-rating">★★★★★</div>
+                                <span class="verified-badge">✓ वेरिफाइड</span>
+                            </div>
+                            
+                            <!-- Quote -->
+                            <div class="quote-text font-eczar text-lg max-[450px]:text-base">
+                                "मैं पिछले 1 साल से कान में सीटी और भिन-भिन की आवाज़ से परेशान थी। रात को सोना तक मुश्किल हो जाता था।
+                                <br><br>
+                                <strong>फिर मैंने Ear Care Capsules शुरू किए… पहले 15–20 दिनों में ही कान की आवाज़ 60–70% कम हो गई।</strong> अब सुनाई भी पहले से साफ़ दे रहा है।"
+                            </div>
+                            
+                            <!-- Customer info -->
+                            <div class="customer-info">
+                                <img src="./image/customer5.jpeg" alt="सरस्वती देवी" class="customer-avatar">
+                                <div class="customer-details">
+                                    <h4>सरस्वती देवी</h4>
+                                    <p>48 साल, देहरादून</p>
+                                </div>
+                                <div class="result-stats ml-auto">
+                                    <div class="stat-item">
+                                        <span class="stat-number">60-70%</span>
+                                        <div class="stat-label">सुधार</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">15-20</span>
+                                        <div class="stat-label">दिन</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success Story 2 - Male -->
+                    <div class="success-story-card p-6 max-[450px]:p-4">
+                        <div class="testimonial-content">
+                            <!-- Rating and verification -->
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="star-rating">★★★★★</div>
+                                <span class="verified-badge">✓ वेरिफाइड</span>
+                            </div>
+                            
+                            <!-- Quote -->
+                            <div class="quote-text font-eczar text-lg max-[450px]:text-base">
+                                "मेरे कान में हमेशा घंटी बजने जैसा लगता था। कभी तेज़, कभी हल्का, पर आवाज़ रुकती नहीं थी। काम में ध्यान ही नहीं लग पाता था।
+                                <br><br>
+                                <strong>Ear Care Capsules लेना शुरू किया और लगभग 25 दिनों में इतना फर्क आया कि पहले जो लगातार आवाज़ रहती थी, अब सिर्फ़ 10–15% ही कभी-कभी महसूस होती है।</strong> सुनने की क्षमता भी काफी साफ़ हो गई है।"
+                            </div>
+                            
+                            <!-- Customer info -->
+                            <div class="customer-info">
+                                <img src="./image/customer4.avif" alt="रमेश सिंह" class="customer-avatar">
+                                <div class="customer-details">
+                                    <h4>रमेश सिंह</h4>
+                                    <p>42 साल, पंजाब</p>
+                                </div>
+                                <div class="result-stats ml-auto">
+                                    <div class="stat-item">
+                                        <span class="stat-number">85-90%</span>
+                                        <div class="stat-label">सुधार</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">25</span>
+                                        <div class="stat-label">दिन</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="bg-brand-light bg-opacity-10 rounded-xl p-6 text-center backdrop-blur-sm border border-brand-muted border-opacity-20 max-[450px]:p-4">
+                        <div class="grid grid-cols-3 gap-4 max-[450px]:gap-2">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-brand-light font-eczar">5000+</div>
+                                <div class="text-xs text-white">खुश ग्राहक</div>
+                            </div>
+                            <div class="text-center border-l border-r border-brand-light border-opacity-30">
+                                <div class="text-2xl font-bold text-brand-light font-eczar">98%</div>
+                                <div class="text-xs text-white">सफलता दर</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-brand-light font-eczar">15-30</div>
+                                <div class="text-xs text-white">दिन में परिणाम</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="text-center mt-6">
+                        <div class="bg-brand-light bg-opacity-20 rounded-xl p-6 backdrop-blur-sm border-2 border-brand-muted border-opacity-40 max-[450px]:p-4">
+                            <h3 class="text-xl font-eczar font-bold mb-3 text-brand-light max-[450px]:text-lg">
+                                <span class="animate-pulse">🎯</span>
+                                आप भी पा सकते हैं यही परिणाम!
+                                <span class="animate-pulse">🎯</span>
+                            </h3>
+                            <p class="text-base font-eczar mb-4 text-white max-[450px]:text-sm">
+                                अभी ऑर्डर करें और 15-30 दिन में देखें अंतर
+                            </p>
+                            <button onclick="scrollToContact()" 
+                                class="bg-brand-secondary hover:bg-brand-primary text-white font-bold px-8 py-3 rounded-lg text-lg font-eczar transition-all duration-300 transform hover:scale-105 shadow-lg max-[450px]:px-6 max-[450px]:py-2 max-[450px]:text-base">
+                                <span class="animate-bounce inline-block">🚀</span>
+                                अभी ऑर्डर करें
+                                <span class="animate-bounce inline-block">🚀</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section classs="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
+                   <img src="./image/discount.png" class="w-full" height="auto" alt="">
+            </section>
+            <section classs="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
+                   <img src="./image/ingrient.png" class="w-full" height="auto" alt="">
+            </section>
+            <section classs="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
+                   <img src="./image/Trust.png" class="w-full" height="auto" alt="">
+            </section>
             <!-- Contact Section -->
             <section class="px-4 py-4 bg-brand-primary text-white border-b-2 border-brand-light max-[450px]:py-6 max-[450px]:px-3" id="contact">
                 <form id="contactForm">
@@ -771,7 +1139,16 @@
         <!-- Purchase Notification System -->
         <div id="purchaseNotification" class="notification-container">
             <div class="notification-card">
-                <div id="notificationIcon" class="notification-icon">R</div>
+                <div class="notification-logo w-14 h-14 rounded-full flex items-center justify-center border-2 border-brand-light border-opacity-30 overflow-visible max-[450px]:w-12 max-[450px]:h-12">
+                    <span class="ear-symbol">👂</span>
+                    <div class="sound-waves">
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                    </div>
+                </div>
                 <div class="notification-content">
                     <div id="notificationName" class="notification-name">रमेश कुमार</div>
                     <div id="notificationCity" class="notification-city">दिल्ली</div>
@@ -817,21 +1194,29 @@
             const notification = notifications[currentNotificationIndex];
             
             // Update notification content
-            document.getElementById('notificationIcon').textContent = notification.icon;
             document.getElementById('notificationName').textContent = notification.name;
             document.getElementById('notificationCity').textContent = notification.city;
             document.getElementById('notificationMessage').textContent = notification.message;
             
             const notificationContainer = document.getElementById('purchaseNotification');
+            const notificationLogo = notificationContainer.querySelector('.notification-logo');
             
             // Show notification with animation (1s up)
             notificationContainer.classList.remove('hide');
             notificationContainer.classList.add('show');
             
+            // Trigger logo rotation animation
+            notificationLogo.classList.add('show-animation');
+            
             // Hide notification after display time (1s up + 2s display + 1s down = 4s total)
             setTimeout(() => {
                 notificationContainer.classList.remove('show');
                 notificationContainer.classList.add('hide');
+                
+                // Remove animation class after hiding
+                setTimeout(() => {
+                    notificationLogo.classList.remove('show-animation');
+                }, 1000);
             }, 3000); // 1s animation + 2s display
             
             // Move to next notification
