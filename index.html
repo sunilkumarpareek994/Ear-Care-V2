@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ear care</title>
     <link href="https://fonts.googleapis.com/css2?family=eczar:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         :root {
@@ -176,7 +175,7 @@
         /* Success Story Styles */
         .success-story-card {
             position: relative;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--brand-light);
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
@@ -288,22 +287,22 @@
         /* Purchase Notification System */
         .notification-container {
             position: fixed;
-            left: 10px;
-            bottom: 120px;
+            left: 50%;
+            bottom: 80px;
             z-index: 1000;
             width: 350px;
-            transform: translateY(100px);
+            transform: translateX(-60%) translateY(50px);
             opacity: 0;
             transition: all 1s ease-in-out;
         }
 
         .notification-container.show {
-            transform: translateY(0);
+            transform: translateX(-60%) translateY(0);
             opacity: 1;
         }
 
         .notification-container.hide {
-            transform: translateY(100px);
+            transform: translateX(-60%) translateY(50px);
             opacity: 0;
         }
 
@@ -341,7 +340,7 @@
                 transform: rotateY(0deg);
             }
             25% {
-                transform: rotateY(25deg);
+                transform: rotate(-25deg);
             }
             50% {
                 transform: rotate(0deg);
@@ -413,21 +412,21 @@
 
         .notification-name {
             font-weight: bold;
-            color: -var(--brand-accent);
+            color: var(--brand-accent);
             font-size: 16px;
             margin-bottom: 3px;
         }
 
         .notification-city {
             font-size: 13px;
-            color: -var(--brand-accent);
+            color: var(--brand-accent);
             opacity: 0.9;
             margin-bottom: 5px;
         }
 
         .notification-message {
             font-size: 14px;
-            color: -var(--brand-accent);
+            color: var(--brand-accent);
             line-height: 1.4;
         }
 
@@ -444,10 +443,11 @@
         /* Mobile responsive */
         @media (max-width: 450px) {
             .notification-container {
-                left: 5px;
-                width: calc(100% - 15px);
+                left: 48%;
+                bottom: 100px;
+                transform: translateX(-100%);
+                width: calc(100% - 20px);
                 max-width: 320px;
-                bottom: 140px;
             }
             
             .notification-card {
@@ -758,7 +758,376 @@
         </header>
         <!-- Main Content -->
         <main class="bg-brand-primary">
-            <!-- FAQ Section -->
+              <!-- Ingredients Section -->
+            <section class="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
+                <div class="text-center mb-6 max-[450px]:mb-4">
+                    <h2 class="text-3xl font-eczar font-bold mb-3 max-[450px]:text-2xl max-[450px]:mb-2 text-white">
+                        <span class="inline-block animate-pulse">🌿</span>
+                        KEY INGREDIENTS — क्या-क्या शामिल है?
+                        <span class="inline-block animate-pulse">🌿</span>
+                    </h2>
+                </div>
+
+                <!-- Ingredients Banner Image -->
+                <div class="mb-8 max-[450px]:mb-6">
+                    <img src="./image/ingrient.png" class="w-full" height="auto" alt="Natural Ingredients">
+                </div>
+
+                <!-- Ingredients Table -->
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-brand-light bg-opacity-10 rounded-xl backdrop-blur-sm border-2 border-brand-light border-opacity-30 overflow-hidden max-[450px]:rounded-lg">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-brand-secondary bg-opacity-80">
+                                    <th class="px-6 py-4 text-left text-lg font-eczar font-bold text-white max-[450px]:px-4 max-[450px]:py-3 max-[450px]:text-sm">
+                                        जड़ी-बूटी
+                                    </th>
+                                    <th class="px-6 py-4 text-left text-lg font-eczar font-bold text-white max-[450px]:px-4 max-[450px]:py-3 max-[450px]:text-sm">
+                                        फायदे
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Tulsi -->
+                                <tr class="border-b border-brand-light border-opacity-20">
+                                    <td class="px-6 py-5 text-lg font-eczar font-semibold text-brand-accent max-[450px]:px-4 max-[450px]:py-4 max-[450px]:text-lg">
+                                        <span class="flex items-center gap-3 max-[450px]:gap-2">
+                                            <span class="text-2xl max-[450px]:text-xl">1️</span>
+                                            <span>तुलसी अर्क</span>
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-5 text-sm font-eczar text-brand-accent max-[450px]:px-4 max-[450px]:py-4 max-[450px]:text-sm">
+                                        तुलसी कान के अंदर Blockage जैसी Feeling को हल्का करने में मदद
+                                    </td>
+                                </tr>
+                                
+                                <!-- Ashwagandha -->
+                                <tr class="border-b border-brand-light border-opacity-20">
+                                    <td class="px-6 py-5 text-lg font-eczar font-semibold text-brand-accent max-[450px]:px-4 max-[450px]:py-4 max-[450px]:text-lg">
+                                        <span class="flex items-center gap-3 max-[450px]:gap-2">
+                                            <span class="text-2xl max-[450px]:text-sm">2️</span>
+                                            <span>अश्वगंधा</span>
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-5 text-sm font-eczar text-brand-accent max-[450px]:px-4 max-[450px]:py-4 max-[450px]:text-sm">
+                                        अश्वगंधा नसों को शांत करने में मदद करती है। कान में सीटी, भनभनाहट या लगातार बजने वाली आवाज़ें कम करने में ये बहुत असरदार मानी जाती है।
+                                    </td>
+                                </tr>
+                                
+                                <!-- Turmeric -->
+                                <tr class="border-b border-brand-light border-opacity-20">
+                                    <td class="px-6 py-5 text-lg font-eczar font-semibold text-brand-accent max-[450px]:px-4 max-[450px]:py-4 max-[450px]:text-lg">
+                                        <span class="flex items-center gap-3 max-[450px]:gap-2">
+                                            <span class="text-2xl max-[450px]:text-xl">3️</span>
+                                            <span>हल्दी</span>
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-5 text-sm font-eczar text-brand-accent max-[450px]:px-4 max-[450px]:py-4 max-[450px]:text-sm">
+                                        हल्दी कान के अंदर भारीपन और दबाव जैसी समस्या में राहत देती है
+                                    </td>
+                                </tr>
+                                
+                                <!-- Giloy -->
+                                <tr>
+                                    <td class="px-6 py-5 text-lg font-eczar font-semibold text-brand-accent max-[450px]:px-4 max-[450px]:py-4 max-[450px]:text-lg">
+                                        <span class="flex items-center gap-3 max-[450px]:gap-2">
+                                            <span class="text-2xl max-[450px]:text-xl">4️</span>
+                                            <span>गिलोय</span>
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-5 text-sm font-eczar text-brand-accent max-[450px]:px-4 max-[450px]:py-4 max-[450px]:text-sm">
+                                        गिलोय शरीर की रोग-प्रतिरोधक शक्ति बढ़ाती है। उम्र के साथ होने वाली कम सुनाई देने की समस्या को सपोर्ट करता है, जिससे सुनने की क्षमता मजबूत बनी रहती है।
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="text-center mt-8 max-[450px]:mt-6">
+                        <div class="bg-brand-secondary bg-opacity-20 rounded-xl p-6 backdrop-blur-sm border-2 border-brand-light border-opacity-30 max-[450px]:p-4">
+                            <p class="text-xl font-eczar font-semibold mb-4 max-[450px]:text-lg max-[450px]:mb-3 text-white">
+                                <span class="animate-pulse">🌟</span>
+                                100% प्राकृतिक और सुरक्षित आयुर्वेदिक फॉर्मूला
+                                <span class="animate-pulse">🌟</span>
+                            </p>
+                            <button onclick="scrollToContact()" 
+                                class="bg-brand-primary hover:bg-brand-accent text-white font-bold px-8 py-3 rounded-lg text-lg font-eczar transition-all duration-300 transform hover:scale-105 shadow-lg max-[450px]:px-6 max-[450px]:py-2 max-[450px]:text-base">
+                                <span class="animate-bounce inline-block">🌿</span>
+                                प्राकृतिक समाधान पाएं
+                                <span class="animate-bounce inline-block">🌿</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trust & Certification Section -->
+            <section class="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
+                <div class="text-center mb-6 max-[450px]:mb-4">
+                    <h2 class="text-3xl font-eczar font-bold mb-3 max-[450px]:text-2xl max-[450px]:mb-2 text-white">
+                        <span class="inline-block animate-pulse">🏆</span>
+                        CERTIFIED & TRUSTED
+                        <span class="inline-block animate-pulse">🏆</span>
+                    </h2>
+                </div>
+
+                <!-- Trust Banner Image -->
+                <div class="mb-8 max-[450px]:mb-6">
+                    <img src="./image/Trust.png" class="w-full" height="auto" alt="Certified and Trusted">
+                </div>
+
+                <!-- Trust Guide Box -->
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-brand-secondary bg-opacity-20 rounded-xl p-6 backdrop-blur-sm border-2 border-brand-light border-opacity-30 max-[450px]:p-4">
+                        <div class="grid grid-cols-2 gap-6 max-[450px]:grid-cols-2 max-[450px]:gap-4">
+                            <!-- GMP Certified -->
+                            <div class="flex items-center gap-3 bg-brand-light bg-opacity-20 rounded-lg p-4 max-[450px]:p-3">
+                                <span class="text-lg font-eczar font-semibold text-brand-accent max-[450px]:text-base">
+                                    GMP Certified
+                                </span>
+                            </div>
+
+                            <!-- Lab Tested -->
+                            <div class="flex items-center gap-3 bg-brand-light bg-opacity-20 rounded-lg p-4 max-[450px]:p-3">
+                                <span class="text-lg font-eczar font-semibold text-brand-accent max-[450px]:text-base">
+                                    Lab Tested
+                                </span>
+                            </div>
+
+                            <!-- 100% Herbal -->
+                            <div class="flex items-center gap-3 bg-brand-light bg-opacity-20 rounded-lg p-4 max-[450px]:p-3">
+                                <span class="text-lg font-eczar font-semibold text-brand-accent max-[450px]:text-base">
+                                    100% Herbal
+                                </span>
+                            </div>
+
+                            <!-- Trusted by 1lakh+ -->
+                            <div class="flex items-center gap-3 bg-brand-light bg-opacity-20 rounded-lg p-4 max-[450px]:p-3">
+                                <span class="text-lg font-eczar font-semibold text-brand-accent max-[450px]:text-base">
+                                    Trusted by 1lakh+
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Message -->
+                        <div class="text-center mt-6 max-[450px]:mt-4">
+                            <p class="text-xl font-eczar font-bold text-white max-[450px]:text-lg">
+                                <span class="animate-pulse">🌟</span>
+                                आपका भरोसा, हमारी प्राथमिकता
+                                <span class="animate-pulse">🌟</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="text-center mt-8 max-[450px]:mt-6">
+                        <div class="bg-brand-muted bg-opacity-20 rounded-xl p-6 backdrop-blur-sm border-2 border-brand-light border-opacity-30 max-[450px]:p-4">
+                            <p class="text-xl font-eczar font-semibold mb-4 max-[450px]:text-lg max-[450px]:mb-3 text-brand-accent">
+                                <span class="animate-pulse">🔒</span>
+                                प्रमाणित गुणवत्ता का भरोसा करें
+                                <span class="animate-pulse">🔒</span>
+                            </p>
+                            <button onclick="scrollToContact()" 
+                                class="bg-brand-secondary hover:bg-brand-accent text-white font-bold px-8 py-3 rounded-lg text-lg font-eczar transition-all duration-300 transform hover:scale-105 shadow-lg max-[450px]:px-6 max-[450px]:py-2 max-[450px]:text-base">
+                                <span class="animate-bounce inline-block">🏆</span>
+                                विश्वसनीय उत्पाद ऑर्डर करें
+                                <span class="animate-bounce inline-block">🏆</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Offer Section -->
+            <section class="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
+                <div class="text-center mb-6 max-[450px]:mb-4">
+                    <h2 class="text-3xl font-eczar font-bold mb-3 max-[450px]:text-2xl max-[450px]:mb-2 text-white">
+                        <span class="inline-block animate-pulse">🎉</span>
+                        OFFER SECTION — अभी चल रहा है खास ऑफर
+                        <span class="inline-block animate-pulse">🎉</span>
+                    </h2>
+                </div>
+
+                <!-- Discount Banner Image -->
+                <div class="mb-6 max-[450px]:mb-4">
+                    <img src="./image/discount.png" class="w-full" height="auto" alt="Special Discount Offer">
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center">
+                    <div class="bg-brand-secondary bg-opacity-80 rounded-xl p-6 backdrop-blur-sm border-2 border-brand-light border-opacity-30 max-[450px]:p-4">
+                        <p class="text-xl font-eczar font-bold mb-4 text-white max-[450px]:text-lg max-[450px]:mb-3">
+                            <span class="animate-pulse">⏰</span>
+                            यह ऑफर सिमित समय के लिए है!
+                            <span class="animate-pulse">⏰</span>
+                        </p>
+                        <button onclick="scrollToContact()" 
+                            class="bg-brand-primary hover:bg-brand-accent text-white font-bold px-8 py-4 rounded-lg text-xl font-eczar transition-all duration-300 transform hover:scale-105 shadow-lg max-[450px]:px-6 max-[450px]:py-3 max-[450px]:text-lg">
+                            <span class="animate-bounce inline-block">💰</span>
+                            30% OFF के साथ ऑर्डर करें
+                            <span class="animate-bounce inline-block">💰</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Success Stories Section -->
+            <section class="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
+                <div class="text-center mb-8 max-[450px]:mb-6">
+                    <h2 class="text-3xl font-eczar font-bold mb-3 max-[450px]:text-2xl max-[450px]:mb-2 text-white">
+                        <span class="inline-block animate-bounce">⭐</span>
+                        सफलता की कहानियाँ
+                        <span class="inline-block animate-bounce">⭐</span>
+                    </h2>
+                    <p class="text-lg font-eczar text-white max-[450px]:text-base">
+                        हजारों लोगों ने पाई है राहत
+                    </p>
+                </div>
+
+                <div class="space-y-6 max-w-2xl mx-auto">
+                    <!-- Success Story 1 - Female -->
+                    <div class="success-story-card p-6 max-[450px]:p-4">
+                        <div class="testimonial-content">
+                            <!-- Rating and verification -->
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="star-rating">★★★★★</div>
+                                <span class="verified-badge">✓ वेरिफाइड</span>
+                            </div>
+                            
+                            <!-- Quote -->
+                            <div class="quote-text font-eczar text-xl max-[450px]:text-lg">
+                                "मैं पिछले 1 साल से कान में सीटी और भिन-भिन की आवाज़ से परेशान थी। रात को सोना तक मुश्किल हो जाता था।
+                                <br><br>
+                                <strong>फिर मैंने Ear Care Capsules शुरू किए… पहले 15–20 दिनों में ही कान की आवाज़ 60–70% कम हो गई।</strong> अब सुनाई भी पहले से साफ़ दे रहा है।"
+                            </div>
+                            
+                            <!-- Customer info -->
+                            <div class="customer-info">
+                                <img src="./image/customer5.jpeg" alt="सरस्वती देवी" class="customer-avatar">
+                                <div class="customer-details">
+                                    <h4>सरस्वती देवी</h4>
+                                    <p>48 साल, देहरादून</p>
+                                </div>
+                                <div class="result-stats ml-auto">
+                                    <div class="stat-item">
+                                        <span class="stat-number">60-70%</span>
+                                        <div class="stat-label">सुधार</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">15-20</span>
+                                        <div class="stat-label">दिन</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success Story 2 - Male -->
+                    <div class="success-story-card p-6 max-[450px]:p-4">
+                        <div class="testimonial-content">
+                            <!-- Rating and verification -->
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="star-rating">★★★★★</div>
+                                <span class="verified-badge">✓ वेरिफाइड</span>
+                            </div>
+                            
+                            <!-- Quote -->
+                            <div class="quote-text font-eczar text-xl max-[450px]:text-lg">
+                                "मेरे कान में हमेशा घंटी बजने जैसा लगता था। कभी तेज़, कभी हल्का, पर आवाज़ रुकती नहीं थी। काम में ध्यान ही नहीं लग पाता था।
+                                <br><br>
+                                <strong>Ear Care Capsules लेना शुरू किया और लगभग 25 दिनों में इतना फर्क आया कि पहले जो लगातार आवाज़ रहती थी, अब सिर्फ़ 10–15% ही कभी-कभी महसूस होती है।</strong> सुनने की क्षमता भी काफी साफ़ हो गई है।"
+                            </div>
+                            
+                            <!-- Customer info -->
+                            <div class="customer-info">
+                                <img src="./image/customer4.avif" alt="रमेश सिंह" class="customer-avatar">
+                                <div class="customer-details">
+                                    <h4>रमेश सिंह</h4>
+                                    <p>42 साल, पंजाब</p>
+                                </div>
+                                <div class="result-stats ml-auto">
+                                    <div class="stat-item">
+                                        <span class="stat-number">85-90%</span>
+                                        <div class="stat-label">सुधार</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">25</span>
+                                        <div class="stat-label">दिन</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="bg-brand-muted bg-opacity-10 rounded-xl p-6 text-center backdrop-blur-sm border border-brand-muted border-opacity-20 max-[450px]:p-4">
+                        <div class="grid grid-cols-3 gap-4 max-[450px]:gap-2">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-brand-accent font-eczar">5000+</div>
+                                <div class="text-xs text-brand-accent">खुश ग्राहक</div>
+                            </div>
+                            <div class="text-center border-l border-r border-brand-accent border-opacity-30">
+                                <div class="text-2xl font-bold text-brand-accent font-eczar">98%</div>
+                                <div class="text-xs text-brand-accent">सफलता दर</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-brand-accent font-eczar">15-30</div>
+                                <div class="text-xs text-brand-accent">दिन में परिणाम</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="text-center mt-6">
+                        <div class="bg-brand-muted bg-opacity-20 rounded-xl p-6 backdrop-blur-sm border-2 border-brand-muted border-opacity-40 max-[450px]:p-4">
+                            <h3 class="text-xl font-eczar font-bold mb-3 text-brand-accent max-[450px]:text-lg">
+                                <span class="animate-pulse">🎯</span>
+                                आप भी पा सकते हैं यही परिणाम!
+                                <span class="animate-pulse">🎯</span>
+                            </h3>
+                            <p class="text-base font-eczar mb-4 text-brand-accent max-[450px]:text-sm">
+                                अभी ऑर्डर करें और 15-30 दिन में देखें अंतर
+                            </p>
+                            <button onclick="scrollToContact()" 
+                                class="bg-brand-secondary hover:bg-brand-primary text-white font-bold px-8 py-3 rounded-lg text-lg font-eczar transition-all duration-300 transform hover:scale-105 shadow-lg max-[450px]:px-6 max-[450px]:py-2 max-[450px]:text-base">
+                                <span class="animate-bounce inline-block">🚀</span>
+                                अभी ऑर्डर करें
+                                <span class="animate-bounce inline-block">🚀</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="px-4 py-4 bg-brand-primary text-white border-b-2 border-brand-light max-[450px]:py-6 max-[450px]:px-3" id="contact">
+                <form id="contactForm">
+                    <div class="mb-4 max-[450px]:mb-3">
+                        <label for="name"
+                            class="block mb-2 text-xl text-white font-eczar font-semibold max-[450px]:text-lg max-[450px]:mb-1">आपका
+                            नाम:</label>
+                        <input type="text" id="name" name="name" required placeholder="अपना नाम लिखें"
+                            class="w-full p-3 border-none rounded text-lg text-brand-primary placeholder-brand-muted font-eczar max-[450px]:p-2 max-[450px]:text-base bg-brand-light">
+                    </div>
+                    <div class="mb-4 max-[450px]:mb-3">
+                        <label for="phone"
+                            class="block mb-2 text-xl text-white font-eczar font-semibold max-[450px]:text-lg max-[450px]:mb-1">फोन
+                            नंबर:</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="अपना फोन नंबर लिखें"
+                            class="w-full p-3 border-none rounded text-lg text-brand-primary placeholder-brand-muted font-eczar max-[450px]:p-2 max-[450px]:text-base bg-brand-light">
+                    </div>
+                    <button type="submit"
+                        class="bg-brand-secondary text-brand-accent font-bold border-none py-4 px-8 rounded text-2xl font-eczar cursor-pointer w-full mt-4 transition-all duration-300 hover:bg-opacity-90 max-[450px]:py-3 max-[450px]:px-4 max-[450px]:text-xl max-[450px]:mt-3"
+                        onclick="showThankYou()">
+                        <span>✨</span>
+                        अभी ऑर्डर करें
+                        <span>✨</span>
+                    </button>
+                </form>
+            </section>
+
+               <!-- FAQ Section -->
             <section class="px-4 py-8 bg-gradient-to-b from-brand-primary to-brand-secondary border-b-2 border-brand-light text-white max-[450px]:py-6 max-[450px]:px-3">
                 <div class="text-center mb-8 max-[450px]:mb-6">
                     <h2 class="text-3xl font-eczar font-bold mb-3 max-[450px]:text-2xl max-[450px]:mb-2 text-white">
@@ -895,173 +1264,6 @@
                     </div>
                 </div>
             </section>
-
-                        <!-- Success Stories Section -->
-            <section class="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
-                <div class="text-center mb-8 max-[450px]:mb-6">
-                    <h2 class="text-3xl font-eczar font-bold mb-3 max-[450px]:text-2xl max-[450px]:mb-2 text-white">
-                        <span class="inline-block animate-bounce">⭐</span>
-                        सफलता की कहानियाँ
-                        <span class="inline-block animate-bounce">⭐</span>
-                    </h2>
-                    <p class="text-lg font-eczar text-white max-[450px]:text-base">
-                        हजारों लोगों ने पाई है राहत
-                    </p>
-                </div>
-
-                <div class="space-y-6 max-w-2xl mx-auto">
-                    <!-- Success Story 1 - Female -->
-                    <div class="success-story-card p-6 max-[450px]:p-4">
-                        <div class="testimonial-content">
-                            <!-- Rating and verification -->
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="star-rating">★★★★★</div>
-                                <span class="verified-badge">✓ वेरिफाइड</span>
-                            </div>
-                            
-                            <!-- Quote -->
-                            <div class="quote-text font-eczar text-lg max-[450px]:text-base">
-                                "मैं पिछले 1 साल से कान में सीटी और भिन-भिन की आवाज़ से परेशान थी। रात को सोना तक मुश्किल हो जाता था।
-                                <br><br>
-                                <strong>फिर मैंने Ear Care Capsules शुरू किए… पहले 15–20 दिनों में ही कान की आवाज़ 60–70% कम हो गई।</strong> अब सुनाई भी पहले से साफ़ दे रहा है।"
-                            </div>
-                            
-                            <!-- Customer info -->
-                            <div class="customer-info">
-                                <img src="./image/customer5.jpeg" alt="सरस्वती देवी" class="customer-avatar">
-                                <div class="customer-details">
-                                    <h4>सरस्वती देवी</h4>
-                                    <p>48 साल, देहरादून</p>
-                                </div>
-                                <div class="result-stats ml-auto">
-                                    <div class="stat-item">
-                                        <span class="stat-number">60-70%</span>
-                                        <div class="stat-label">सुधार</div>
-                                    </div>
-                                    <div class="stat-item">
-                                        <span class="stat-number">15-20</span>
-                                        <div class="stat-label">दिन</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Success Story 2 - Male -->
-                    <div class="success-story-card p-6 max-[450px]:p-4">
-                        <div class="testimonial-content">
-                            <!-- Rating and verification -->
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="star-rating">★★★★★</div>
-                                <span class="verified-badge">✓ वेरिफाइड</span>
-                            </div>
-                            
-                            <!-- Quote -->
-                            <div class="quote-text font-eczar text-lg max-[450px]:text-base">
-                                "मेरे कान में हमेशा घंटी बजने जैसा लगता था। कभी तेज़, कभी हल्का, पर आवाज़ रुकती नहीं थी। काम में ध्यान ही नहीं लग पाता था।
-                                <br><br>
-                                <strong>Ear Care Capsules लेना शुरू किया और लगभग 25 दिनों में इतना फर्क आया कि पहले जो लगातार आवाज़ रहती थी, अब सिर्फ़ 10–15% ही कभी-कभी महसूस होती है।</strong> सुनने की क्षमता भी काफी साफ़ हो गई है।"
-                            </div>
-                            
-                            <!-- Customer info -->
-                            <div class="customer-info">
-                                <img src="./image/customer4.avif" alt="रमेश सिंह" class="customer-avatar">
-                                <div class="customer-details">
-                                    <h4>रमेश सिंह</h4>
-                                    <p>42 साल, पंजाब</p>
-                                </div>
-                                <div class="result-stats ml-auto">
-                                    <div class="stat-item">
-                                        <span class="stat-number">85-90%</span>
-                                        <div class="stat-label">सुधार</div>
-                                    </div>
-                                    <div class="stat-item">
-                                        <span class="stat-number">25</span>
-                                        <div class="stat-label">दिन</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Trust Indicators -->
-                    <div class="bg-brand-light bg-opacity-10 rounded-xl p-6 text-center backdrop-blur-sm border border-brand-muted border-opacity-20 max-[450px]:p-4">
-                        <div class="grid grid-cols-3 gap-4 max-[450px]:gap-2">
-                            <div class="text-center">
-                                <div class="text-2xl font-bold text-brand-light font-eczar">5000+</div>
-                                <div class="text-xs text-white">खुश ग्राहक</div>
-                            </div>
-                            <div class="text-center border-l border-r border-brand-light border-opacity-30">
-                                <div class="text-2xl font-bold text-brand-light font-eczar">98%</div>
-                                <div class="text-xs text-white">सफलता दर</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-2xl font-bold text-brand-light font-eczar">15-30</div>
-                                <div class="text-xs text-white">दिन में परिणाम</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Call to Action -->
-                    <div class="text-center mt-6">
-                        <div class="bg-brand-light bg-opacity-20 rounded-xl p-6 backdrop-blur-sm border-2 border-brand-muted border-opacity-40 max-[450px]:p-4">
-                            <h3 class="text-xl font-eczar font-bold mb-3 text-brand-light max-[450px]:text-lg">
-                                <span class="animate-pulse">🎯</span>
-                                आप भी पा सकते हैं यही परिणाम!
-                                <span class="animate-pulse">🎯</span>
-                            </h3>
-                            <p class="text-base font-eczar mb-4 text-white max-[450px]:text-sm">
-                                अभी ऑर्डर करें और 15-30 दिन में देखें अंतर
-                            </p>
-                            <button onclick="scrollToContact()" 
-                                class="bg-brand-secondary hover:bg-brand-primary text-white font-bold px-8 py-3 rounded-lg text-lg font-eczar transition-all duration-300 transform hover:scale-105 shadow-lg max-[450px]:px-6 max-[450px]:py-2 max-[450px]:text-base">
-                                <span class="animate-bounce inline-block">🚀</span>
-                                अभी ऑर्डर करें
-                                <span class="animate-bounce inline-block">🚀</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section classs="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
-                   <img src="./image/discount.png" class="w-full" height="auto" alt="">
-            </section>
-            <section classs="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
-                   <img src="./image/ingrient.png" class="w-full" height="auto" alt="">
-            </section>
-            <section classs="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
-                   <img src="./image/Trust.png" class="w-full" height="auto" alt="">
-            </section>
-            <!-- Contact Section -->
-            <section class="px-4 py-4 bg-brand-primary text-white border-b-2 border-brand-light max-[450px]:py-6 max-[450px]:px-3" id="contact">
-                <form id="contactForm">
-                    <div class="mb-4 max-[450px]:mb-3">
-                        <label for="name"
-                            class="block mb-2 text-xl text-white font-eczar font-semibold max-[450px]:text-lg max-[450px]:mb-1">आपका
-                            नाम:</label>
-                        <input type="text" id="name" name="name" required placeholder="अपना नाम लिखें"
-                            class="w-full p-3 border-none rounded text-lg text-brand-primary placeholder-brand-muted font-eczar max-[450px]:p-2 max-[450px]:text-base bg-brand-light">
-                    </div>
-                    <div class="mb-4 max-[450px]:mb-3">
-                        <label for="phone"
-                            class="block mb-2 text-xl text-white font-eczar font-semibold max-[450px]:text-lg max-[450px]:mb-1">फोन
-                            नंबर:</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="अपना फोन नंबर लिखें"
-                            class="w-full p-3 border-none rounded text-lg text-brand-primary placeholder-brand-muted font-eczar max-[450px]:p-2 max-[450px]:text-base bg-brand-light">
-                    </div>
-                    <button type="submit"
-                        class="bg-brand-secondary text-brand-accent font-bold border-none py-4 px-8 rounded text-2xl font-eczar cursor-pointer w-full mt-4 transition-all duration-300 hover:bg-opacity-90 max-[450px]:py-3 max-[450px]:px-4 max-[450px]:text-xl max-[450px]:mt-3"
-                        onclick="showThankYou()">
-                        <span>✨</span>
-                        अभी ऑर्डर करें
-                        <span>✨</span>
-                    </button>
-                </form>
-            </section>
-
-
-
         </main>
 
         <footer
@@ -1136,28 +1338,28 @@
             </div>
         </div>
 
-        <!-- Purchase Notification System -->
-        <div id="purchaseNotification" class="notification-container">
-            <div class="notification-card">
-                <div class="notification-logo w-14 h-14 rounded-full flex items-center justify-center border-2 border-brand-light border-opacity-30 overflow-visible max-[450px]:w-12 max-[450px]:h-12">
-                    <span class="ear-symbol">👂</span>
-                    <div class="sound-waves">
-                        <div class="wave"></div>
-                        <div class="wave"></div>
-                        <div class="wave"></div>
-                        <div class="wave"></div>
-                        <div class="wave"></div>
-                    </div>
-                </div>
-                <div class="notification-content">
-                    <div id="notificationName" class="notification-name">रमेश कुमार</div>
-                    <div id="notificationCity" class="notification-city">दिल्ली</div>
-                    <div id="notificationMessage" class="notification-message">ने अपने पिता के लिए यह प्रोडक्ट खरीदा</div>
-                </div>
-                <div class="notification-badge">खरीदा</div>
-            </div>
-        </div>
+    </div>
 
+    <!-- Purchase Notification System (Outside main container for full screen positioning) -->
+    <div id="purchaseNotification" class="notification-container">
+        <div class="notification-card">
+            <div class="notification-logo w-14 h-14 rounded-full flex items-center justify-center border-2 border-brand-light border-opacity-30 overflow-visible max-[450px]:w-12 max-[450px]:h-12">
+                <span class="ear-symbol">👂</span>
+                <div class="sound-waves">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+            </div>
+            <div class="notification-content">
+                <div id="notificationName" class="notification-name">रमेश कुमार</div>
+                <div id="notificationCity" class="notification-city">दिल्ली</div>
+                <div id="notificationMessage" class="notification-message">ने अपने पिता के लिए यह प्रोडक्ट खरीदा</div>
+            </div>
+            <div class="notification-badge">खरीदा</div>
+        </div>
     </div>
     <script src="./data.js"></script>
     <script>
@@ -1189,39 +1391,39 @@
         };
 
         // Show notification function
-        function showNotification() {
-            const notifications = getNotifications();
-            const notification = notifications[currentNotificationIndex];
+        // function showNotification() {
+        //     const notifications = getNotifications();
+        //     const notification = notifications[currentNotificationIndex];
             
-            // Update notification content
-            document.getElementById('notificationName').textContent = notification.name;
-            document.getElementById('notificationCity').textContent = notification.city;
-            document.getElementById('notificationMessage').textContent = notification.message;
+        //     // Update notification content
+        //     document.getElementById('notificationName').textContent = notification.name;
+        //     document.getElementById('notificationCity').textContent = notification.city;
+        //     document.getElementById('notificationMessage').textContent = notification.message;
             
-            const notificationContainer = document.getElementById('purchaseNotification');
-            const notificationLogo = notificationContainer.querySelector('.notification-logo');
+        //     const notificationContainer = document.getElementById('purchaseNotification');
+        //     const notificationLogo = notificationContainer.querySelector('.notification-logo');
             
-            // Show notification with animation (1s up)
-            notificationContainer.classList.remove('hide');
-            notificationContainer.classList.add('show');
+        //     // Show notification with animation (1s up)
+        //     notificationContainer.classList.remove('hide');
+        //     notificationContainer.classList.add('show');
             
-            // Trigger logo rotation animation
-            notificationLogo.classList.add('show-animation');
+        //     // Trigger logo rotation animation
+        //     notificationLogo.classList.add('show-animation');
             
-            // Hide notification after display time (1s up + 2s display + 1s down = 4s total)
-            setTimeout(() => {
-                notificationContainer.classList.remove('show');
-                notificationContainer.classList.add('hide');
+        //     // Hide notification after display time (1s up + 2s display + 1s down = 4s total)
+        //     setTimeout(() => {
+        //         notificationContainer.classList.remove('show');
+        //         notificationContainer.classList.add('hide');
                 
-                // Remove animation class after hiding
-                setTimeout(() => {
-                    notificationLogo.classList.remove('show-animation');
-                }, 1000);
-            }, 3000); // 1s animation + 2s display
+        //         // Remove animation class after hiding
+        //         setTimeout(() => {
+        //             notificationLogo.classList.remove('show-animation');
+        //         }, 1000);
+        //     }, 3000); // 1s animation + 2s display
             
-            // Move to next notification
-            currentNotificationIndex = (currentNotificationIndex + 1) % notifications.length;
-        }
+        //     // Move to next notification
+        //     currentNotificationIndex = (currentNotificationIndex + 1) % notifications.length;
+        // }
 
         // Initialize notification system
         function initNotificationSystem() {
