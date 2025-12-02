@@ -14,6 +14,9 @@
             --brand-light: #f8d2c8;
             --brand-muted: #f5caa5;
             --brand-accent: #1a1a1a;
+            --support-peach: #F8D2C8;
+            --text-dark: #1A1A1A;
+            --muted: #666;
         }
 
         .bg-brand-primary {
@@ -740,6 +743,157 @@
                 transform: translateY(-2px) scale(1.1);
             }
         }
+
+        .howto-section {
+            padding: 40px 16px;
+            background: linear-gradient(180deg, var(--support-peach) 0%, #fff 100%);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .howto-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .howto-header h2 {
+            font-family: 'Eczar', serif;
+            color: var(--brand-primary);
+            font-size: 28px;
+            margin: 0 0 8px;
+        }
+
+        .howto-header .lead {
+            color: var(--text-dark);
+            opacity: 0.9;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        /* Timeline layout */
+        .howto-timeline {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 18px;
+            margin: 28px 0;
+            flex-wrap: wrap;
+        }
+
+        .howto-step {
+            background: #fff;
+            border-radius: 14px;
+            padding: 18px;
+            flex: 1 1 30%;
+            min-width: 220px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(143, 17, 19, 0.06);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .howto-step:focus-within,
+        .howto-step:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .icon-pill {
+            width: 84px;
+            height: 84px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, rgba(143, 17, 19, 0.06), rgba(207, 90, 77, 0.02));
+            flex-shrink: 0;
+        }
+
+        .pill-svg {
+            width: 64px;
+            height: 64px;
+            display: block;
+        }
+
+        .step-content h3 {
+            margin: 0 0 6px;
+            font-size: 18px;
+            color: var(--brand-primary);
+            font-family: 'Eczar', serif;
+        }
+
+        .step-content p {
+            margin: 0 0 8px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.35;
+        }
+
+        .meta {
+            font-size: 13px;
+            color: var(--text-dark);
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        /* connectors for large screens (visual) */
+        .howto-connector {
+            display: none;
+        }
+
+        /* not needed for responsive simple layout */
+
+        /* CTA */
+        .howto-cta {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .btn-order {
+            background: linear-gradient(90deg, var(--brand-secondary), var(--brand-primary));
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(143, 17, 19, 0.18);
+            transition: transform .18s ease;
+        }
+
+        .btn-order:hover {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .disclaimer {
+            display: block;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* Responsive: stack vertically on small screens */
+        @media (max-width:880px) {
+            .howto-timeline {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .howto-step {
+                min-width: 100%;
+                padding: 14px;
+            }
+
+            .icon-pill {
+                width: 70px;
+                height: 70px;
+            }
+        }
     </style>
 </head>
 
@@ -782,7 +936,8 @@
         </header>
         <!-- Main Content -->
         <main class="bg-brand-primary">
-          <!-- Problem Section -->
+         
+<!-- Problem Section -->
 <section class="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
     <div class="text-center mb-8 max-[450px]:mb-6">
         <h2 class="text-3xl font-eczar font-bold mb-3 max-[450px]:text-2xl max-[450px]:mb-2 text-white">
@@ -898,6 +1053,29 @@
     </div>
 </section>
 
+<!-- Product Introduction Section -->
+<section class="py-8 bg-brand-primary">
+    <div class="container mx-auto text-center">
+        <!-- Product Poster -->
+        <div class="mb-6">
+            <img src="./image/ProductIntro.png" alt="EarCare Capsules" class="w-full h-auto max-w-md mx-auto">
+        </div>
+
+        <!-- Product Description -->
+        <div class="max-w-2xl px-2 mx-auto">
+            <p class="text-white text-xl  leading-relaxed font-eczar">
+                <span class="text-brand-muted font-bold">आयुर्वेद से बनी</span> और
+                <span class="text-brand-muted font-bold">वर्षों की रिसर्च</span> के बाद तैयार —
+                <span class="text-brand-muted font-bold text-xl">EarCare Capsules</span><br>
+                जो कान की <span class="text-brand-muted font-semibold">नसों</span>,
+                <span class="text-brand-muted font-semibold">रक्त प्रवाह</span> और
+                <span class="text-brand-muted font-semibold">प्राकृतिक सुनने की क्षमता</span> को
+                धीरे-धीरे मजबूत बनाने में मदद करता है।
+            </p>
+        </div>
+    </div>
+</section>
+
 <!-- How It Works Section -->
 <section class="bg-brand-primary px-4 py-8 max-[450px]:px-4 max-[450px]:py-6">
     <div class="text-center mb-8 max-[450px]:mb-6">
@@ -994,6 +1172,193 @@
     </div>
 </section>
 
+<!-- Benefits Section -->
+<section class="bg-brand-primary px-4 py-8 max-[450px]:px-4 max-[450px]:py-6">
+    <div class="text-center mb-8 max-[450px]:mb-6">
+        <h2 class="text-3xl font-eczar font-bold text-white mb-4 max-[450px]:text-2xl max-[450px]:mb-3">
+            क्या-क्या सुधार मिलता है?
+        </h2>
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 max-[450px]:gap-3">
+        <!-- Benefit Card 1 -->
+        <div class="bg-brand-muted rounded-xl p-4 shadow-lg border-2 border-brand-light max-[450px]:p-3">
+            <div class="flex items-center gap-4 max-[450px]:gap-3">
+                <div
+                    class="flex-shrink-0 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md max-[450px]:w-12 max-[450px]:h-12">
+                    <span class="text-4xl max-[450px]:text-3xl">🔇</span>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                        <span class="text-3xl font-bold max-[450px]:text-2xl">👂</span>
+                        <p class="text-xl font-eczar font-semibold text-brand-accent max-[450px]:text-lg">
+                            कान में सीटी जैसी आवाज़ कम
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefit Card 2 -->
+        <div class="bg-brand-muted rounded-xl p-4 shadow-lg border-2 border-brand-light max-[450px]:p-3">
+            <div class="flex items-center gap-4 max-[450px]:gap-3">
+                <div
+                    class="flex-shrink-0 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md max-[450px]:w-12 max-[450px]:h-12">
+                    <span class="text-4xl max-[450px]:text-3xl">🌊</span>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                        <span class="text-3xl font-bold max-[450px]:text-2xl">👂</span>
+                        <p class="text-xl font-eczar font-semibold text-brand-accent max-[450px]:text-lg">
+                            भिनभिनाहट और गूंज में राहत
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefit Card 3 -->
+        <div class="bg-brand-muted rounded-xl p-4 shadow-lg border-2 border-brand-light max-[450px]:p-3">
+            <div class="flex items-center gap-4 max-[450px]:gap-3">
+                <div
+                    class="flex-shrink-0 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md max-[450px]:w-12 max-[450px]:h-12">
+                    <span class="text-4xl max-[450px]:text-3xl">🔊</span>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                        <span class="text-3xl font-bold max-[450px]:text-2xl">👂</span>
+                        <p class="text-xl font-eczar font-semibold text-brand-accent max-[450px]:text-lg">
+                            साफ़ सुनने में मदद
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefit Card 4 -->
+        <div class="bg-brand-muted rounded-xl p-4 shadow-lg border-2 border-brand-light max-[450px]:p-3">
+            <div class="flex items-center gap-4 max-[450px]:gap-3">
+                <div
+                    class="flex-shrink-0 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md max-[450px]:w-12 max-[450px]:h-12">
+                    <span class="text-4xl max-[450px]:text-3xl">🧠</span>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                        <span class="text-3xl font-bold max-[450px]:text-2xl">👂</span>
+                        <p class="text-xl font-eczar font-semibold text-brand-accent max-[450px]:text-lg">
+                            Hearing nerves को support
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefit Card 5 -->
+        <div class="bg-brand-muted rounded-xl p-4 shadow-lg border-2 border-brand-light max-[450px]:p-3">
+            <div class="flex items-center gap-4 max-[450px]:gap-3">
+                <div
+                    class="flex-shrink-0 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md max-[450px]:w-12 max-[450px]:h-12">
+                    <span class="text-4xl max-[450px]:text-3xl">📈</span>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2">
+                        <span class="text-3xl font-bold max-[450px]:text-2xl">👂</span>
+                        <p class="text-xl font-eczar font-semibold text-brand-accent max-[450px]:text-lg">
+                            हल्की सुनाई देने की समस्या में सुधार
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recommendation Section -->
+<section class="py-10 px-4 bg-brand-primary">
+    <div class="container mx-auto max-w-4xl">
+        <!-- Section Header -->
+        <div class="text-center mb-8">
+            <h2 class="text-white text-3xl font-eczar font-bold mb-2 max-[450px]:text-2xl">
+                RECOMMENDATION — किसे ज़रूर
+            </h2>
+            <h3 class="text-brand-muted text-2xl font-eczar font-semibold max-[450px]:text-xl">
+                इस्तेमाल करना चाहिए?
+            </h3>
+        </div>
+
+        <!-- Points Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Point 1 -->
+            <div
+                class="bg-brand-muted rounded-lg p-6 flex items-start gap-4 shadow-lg hover:transform hover:scale-105 transition-all duration-300">
+                <div class="flex-shrink-0 text-4xl">
+                    🔔
+                </div>
+                <p class="text-brand-accent text-xl font-eczar font-bold leading-relaxed">
+                    जिन्हें कान में सीटी / घंटी / भिन-भिन की आवाज़ें आती हैं
+                </p>
+            </div>
+
+            <!-- Point 2 -->
+            <div
+                class="bg-brand-muted rounded-lg p-6 flex items-start gap-4 shadow-lg hover:transform hover:scale-105 transition-all duration-300">
+                <div class="flex-shrink-0 text-4xl">
+                    🔇
+                </div>
+                <p class="text-brand-accent text-xl font-eczar font-bold leading-relaxed">
+                    जिन्हें धीमी सुनाई देता है
+                </p>
+            </div>
+
+            <!-- Point 3 -->
+            <div
+                class="bg-brand-muted rounded-lg p-6 flex items-start gap-4 shadow-lg hover:transform hover:scale-105 transition-all duration-300">
+                <div class="flex-shrink-0 text-4xl">
+                    🗣️
+                </div>
+                <p class="text-brand-accent text-xl font-eczar font-bold leading-relaxed">
+                    जब लोग बोलते हैं तो शब्द कट-कटकर समझ आते हैं
+                </p>
+            </div>
+
+            <!-- Point 4 -->
+            <div
+                class="bg-brand-muted rounded-lg p-6 flex items-start gap-4 shadow-lg hover:transform hover:scale-105 transition-all duration-300">
+                <div class="flex-shrink-0 text-4xl">
+                    😖
+                </div>
+                <p class="text-brand-accent text-xl font-eczar font-bold leading-relaxed">
+                    जिनको कान में <span class="text-brand-primary">Pressure</span> / <span
+                        class="text-brand-primary">Blockage Feel</span> होता है
+                </p>
+            </div>
+
+            <!-- Point 5 -->
+            <div
+                class="bg-brand-muted rounded-lg p-6 flex items-start gap-4 shadow-lg hover:transform hover:scale-105 transition-all duration-300">
+                <div class="flex-shrink-0 text-4xl">
+                    📱
+                </div>
+                <p class="text-brand-accent text-xl font-eczar font-bold leading-relaxed">
+                    <span class="text-brand-primary">Earphone</span>/<span class="text-brand-primary">Mobile Use</span>
+                    करने से समस्या बढ़ रही है
+                </p>
+            </div>
+
+            <!-- Point 6 -->
+            <div
+                class="bg-brand-muted rounded-lg p-6 flex items-start gap-4 shadow-lg hover:transform hover:scale-105 transition-all duration-300">
+                <div class="flex-shrink-0 text-4xl">
+                    👴
+                </div>
+                <p class="text-brand-accent text-xl font-eczar font-bold leading-relaxed">
+                    उम्र के साथ सुनने की क्षमता कम हो रही है
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Ingredients Section -->
 <section class="px-4 py-8 bg-brand-primary text-white max-[450px]:py-6 max-[450px]:px-3">
     <div class="text-center mb-6 max-[450px]:mb-4">
@@ -1006,7 +1371,7 @@
 
     <!-- Ingredients Banner Image -->
     <div class="mb-8 max-[450px]:mb-6">
-        <img src="./image/ingrient.png" class="w-full" height="auto" alt="Natural Ingredients">
+        <img src="./image/Ingrient.png" class="w-full" height="auto" alt="Natural Ingredients">
     </div>
 
     <!-- Ingredients Table -->
@@ -1109,6 +1474,97 @@
                 </button>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- how to use section -->
+<section class="py-16 bg-gradient-to-b w-full from-[#FFF8F6] to-white max-sm:py-10 max-[450px]:py-8">
+    <div class="max-w-[450px] mx-auto px-4">
+        <div class="text-center mb-10 max-[450px]:mb-8">
+            <h2 class="text-3xl font-eczar font-bold text-[#8F1113] max-sm:text-2xl max-[450px]:text-2xl">
+                HOW TO USE — <span class="text-[#CF5A4D]">कैसे लें?</span>
+            </h2>
+            <p class="text-lg font-eczar text-gray-600 max-sm:text-base max-[450px]:text-base mt-2">
+                सिर्फ 2 कैप्सूल से बेहतर सुनने की शक्ति का सफर
+            </p>
+        </div>
+
+        <!-- Steps Container -->
+        <div class="relative">
+            <!-- Universal Layout: 2 steps in row, 3rd centered below (works for all screen sizes) -->
+            <div>
+                <!-- Top Row: Steps 1 and 2 -->
+                <div class="flex justify-between items-center relative px-4">
+                    <!-- STEP 1 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-32 h-32 lg:w-36 lg:h-36 max-sm:w-28 max-sm:h-28 max-[450px]:w-24 max-[450px]:h-24 rounded-full shadow-lg flex items-center justify-center 
+                                    bg-white border-4 border-[#8F1113] relative">
+                            <span class="text-5xl lg:text-6xl max-sm:text-4xl max-[450px]:text-3xl">🌅</span>
+                            <div
+                                class="absolute -top-4 -right-4 lg:-top-5 lg:-right-5 max-sm:-top-3 max-sm:-right-3 max-[450px:-top-3 max-[450px]:-right-3 w-10 h-10 lg:w-12 lg:h-12 max-sm:w-8 max-sm:h-8 max-[450px]:w-7 max-[450px]:h-7 bg-[#CF5A4D] text-white 
+                                        flex items-center justify-center rounded-full font-bold lg:text-lg max-sm:text-sm">
+                                1
+                            </div>
+                        </div>
+                        <p
+                            class="mt-4 lg:mt-5 max-sm:mt-3 font-extrabold text-center text-lg lg:text-xl max-sm:text-lg max-[450px]:text-sm font-eczar text-gray-700">
+                            सुबह 1 कैप्सूल<br>(खाने के बाद)
+                        </p>
+                    </div>
+
+                    <!-- Horizontal connecting line between step 1 and 2 -->
+                    <div
+                        class="absolute top-16 lg:top-18 max-sm:top-14 max-[450px]:top-12 left-1/2 transform -translate-x-1/2 w-20 lg:w-24 max-sm:w-16 max-[450px]:w-12 h-0.5 bg-[#CF5A4D]">
+                    </div>
+
+                    <!-- STEP 2 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-32 h-32 lg:w-36 lg:h-36 max-sm:w-28 max-sm:h-28 max-[450px]:w-24 max-[450px]:h-24 rounded-full shadow-lg flex items-center justify-center 
+                                    bg-white border-4 border-[#8F1113] relative">
+                            <span class="text-5xl lg:text-6xl max-sm:text-4xl max-[450px]:text-3xl">🌙</span>
+                            <div
+                                class="absolute -top-4 -right-4 lg:-top-5 lg:-right-5 max-sm:-top-3 max-sm:-right-3 max-[450px]:-top-3 max-[450px]:-right-3 w-10 h-10 lg:w-12 lg:h-12 max-sm:w-8 max-sm:h-8 max-[450px]:w-7 max-[450px]:h-7 bg-[#CF5A4D] text-white 
+                                        flex items-center justify-center rounded-full font-bold lg:text-lg max-sm:text-sm">
+                                2
+                            </div>
+                        </div>
+                        <p
+                            class="mt-4 lg:mt-5 max-sm:mt-3 font-extrabold text-center text-lg lg:text-xl max-sm:text-lg max-[450px]:text-sm font-eczar text-gray-700">
+                            रात 1 कैप्सूल<br>(खाने के बाद)
+                        </p>
+                    </div>
+
+                    <!-- Vertical line from middle of horizontal line down to step 3 -->
+                    <div
+                        class="absolute top-16 lg:top-18 max-sm:top-14 max-[450px]:top-12 left-1/2 transform -translate-x-1/2 w-0.5 h-20 lg:h-24 max-sm:h-16 max-[450px]:h-12 bg-[#CF5A4D] mt-0.5">
+                    </div>
+                </div>
+
+                <!-- Bottom Row: Step 3 centered -->
+                <div class="flex justify-center mt-16 lg:mt-20 max-sm:mt-12 max-[450px]:mt-8">
+                    <!-- STEP 3 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-32 h-32 lg:w-36 lg:h-36 max-sm:w-28 max-sm:h-28 max-[450px]:w-24 max-[450px]:h-24 rounded-full shadow-lg flex items-center justify-center 
+                                    bg-white border-4 border-[#8F1113] relative">
+                            <span class="text-5xl lg:text-6xl max-sm:text-4xl max-[450px]:text-3xl">⏳</span>
+                            <div
+                                class="absolute -top-4 -right-4 lg:-top-5 lg:-right-5 max-sm:-top-3 max-sm:-right-3 max-[450px]:-top-3 max-[450px]:-right-3 w-10 h-10 lg:w-12 lg:h-12 max-sm:w-8 max-sm:h-8 max-[450px]:w-7 max-[450px]:h-7 bg-[#CF5A4D] text-white 
+                                        flex items-center justify-center rounded-full font-bold lg:text-lg max-sm:text-sm">
+                                3
+                            </div>
+                        </div>
+                        <p
+                            class="mt-4 lg:mt-5 max-sm:mt-3 font-extrabold text-center text-lg lg:text-xl max-sm:text-base max-[450px]:text-lg font-eczar text-gray-700">
+                            नियमितता ज़रूरी —<br>तभी असर दिखता है
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-center mt-10 max-[450px]:mt-8 text-gray-600 font-eczar text-2xl max-[450px]:text-xl px-4">
+            *बेहतर परिणाम के लिए 45–60 दिन लगातार उपयोग करें।
+        </p>
     </div>
 </section>
 
@@ -1547,6 +2003,7 @@
         </div>
     </div>
 </section>
+            
         </main>
 
         <footer
@@ -1675,39 +2132,39 @@
         };
 
         // Show notification function
-        // function showNotification() {
-        //     const notifications = getNotifications();
-        //     const notification = notifications[currentNotificationIndex];
+        function showNotification() {
+            const notifications = getNotifications();
+            const notification = notifications[currentNotificationIndex];
 
-        //     // Update notification content
-        //     document.getElementById('notificationName').textContent = notification.name;
-        //     document.getElementById('notificationCity').textContent = notification.city;
-        //     document.getElementById('notificationMessage').textContent = notification.message;
+            // Update notification content
+            document.getElementById('notificationName').textContent = notification.name;
+            document.getElementById('notificationCity').textContent = notification.city;
+            document.getElementById('notificationMessage').textContent = notification.message;
 
-        //     const notificationContainer = document.getElementById('purchaseNotification');
-        //     const notificationLogo = notificationContainer.querySelector('.notification-logo');
+            const notificationContainer = document.getElementById('purchaseNotification');
+            const notificationLogo = notificationContainer.querySelector('.notification-logo');
 
-        //     // Show notification with animation (1s up)
-        //     notificationContainer.classList.remove('hide');
-        //     notificationContainer.classList.add('show');
+            // Show notification with animation (1s up)
+            notificationContainer.classList.remove('hide');
+            notificationContainer.classList.add('show');
 
-        //     // Trigger logo rotation animation
-        //     notificationLogo.classList.add('show-animation');
+            // Trigger logo rotation animation
+            notificationLogo.classList.add('show-animation');
 
-        //     // Hide notification after display time (1s up + 2s display + 1s down = 4s total)
-        //     setTimeout(() => {
-        //         notificationContainer.classList.remove('show');
-        //         notificationContainer.classList.add('hide');
+            // Hide notification after display time (1s up + 2s display + 1s down = 4s total)
+            setTimeout(() => {
+                notificationContainer.classList.remove('show');
+                notificationContainer.classList.add('hide');
 
-        //         // Remove animation class after hiding
-        //         setTimeout(() => {
-        //             notificationLogo.classList.remove('show-animation');
-        //         }, 1000);
-        //     }, 3000); // 1s animation + 2s display
+                // Remove animation class after hiding
+                setTimeout(() => {
+                    notificationLogo.classList.remove('show-animation');
+                }, 1000);
+            }, 3000); // 1s animation + 2s display
 
-        //     // Move to next notification
-        //     currentNotificationIndex = (currentNotificationIndex + 1) % notifications.length;
-        // }
+            // Move to next notification
+            currentNotificationIndex = (currentNotificationIndex + 1) % notifications.length;
+        }
 
         // Initialize notification system
         function initNotificationSystem() {
