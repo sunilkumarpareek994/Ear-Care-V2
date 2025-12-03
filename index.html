@@ -963,7 +963,8 @@
                     <!-- Two Cards Container -->
                     <div class="grid grid-cols-1 md:grid-cols-1 gap-6 mb-8 max-w-6xl mx-auto max-[450px]:gap-4">
                         <!-- Card 1 -->
-                        <div class="bg-brand-muted rounded-xl overflow-hidden shadow-lg border border-brand-light border-opacity-30 w-full max-w-xs mx-auto">
+                        <div
+                            class="bg-brand-muted rounded-xl overflow-hidden shadow-lg border border-brand-light border-opacity-30 w-full max-w-xs mx-auto">
                             <div class="bg-white rounded-t-xl p-2 h-48 flex items-center justify-center">
                                 <img src="./image/stress.png" alt="Stress" class="w-full h-full object-cover">
                             </div>
@@ -979,7 +980,8 @@
                         </div>
 
                         <!-- Card 2 -->
-                        <div class="bg-brand-muted rounded-xl overflow-hidden shadow-lg border border-brand-light border-opacity-30 w-full max-w-xs mx-auto">
+                        <div
+                            class="bg-brand-muted rounded-xl overflow-hidden shadow-lg border border-brand-light border-opacity-30 w-full max-w-xs mx-auto">
                             <div class="bg-white rounded-t-xl p-2 h-48 flex items-center justify-center">
                                 <img src="./image/Phyco.avif" alt="Psychology" class="w-full h-full object-cover">
                             </div>
@@ -1232,7 +1234,8 @@
                     <div
                         class="bg-brand-muted rounded-xl overflow-hidden shadow-lg border-2 border-brand-light w-full max-w-xs mx-auto">
                         <div class="bg-white p-2 h-48 flex items-center justify-center">
-                            <img src="./image/Improved4.avif" alt="Tinnitus Relief" class="w-full h-full object-contain">
+                            <img src="./image/Improved4.avif" alt="Tinnitus Relief"
+                                class="w-full h-full object-contain">
                         </div>
                         <div class="p-4 max-[450px]:p-3">
                             <div class="flex items-center gap-2 mb-3 max-[450px]:mb-2">
@@ -1258,7 +1261,8 @@
             </section>
 
             <!-- Benefits Section -->
-            <section class="bg-brand-primary  border-b-2 border-brand-light  px-4 py-8 max-[450px]:px-4 max-[450px]:py-6">
+            <section
+                class="bg-brand-primary  border-b-2 border-brand-light  px-4 py-8 max-[450px]:px-4 max-[450px]:py-6">
                 <div class="text-center mb-8 max-[450px]:mb-6">
                     <h2 class="text-4xl font-arya font-bold text-white mb-4 max-[450px]:text-3xl max-[450px]:mb-3">
                         क्या-क्या सुधार मिलता है?
@@ -2148,10 +2152,11 @@
                 <!-- Main Content: Horizontal Layout -->
                 <div class="grid grid-cols-1 gap-3 max-[450px]:gap-5">
                     <!-- Left Side: Promotional Points -->
-                    <div class="flex-1 justify-around  gap-2 min-w-0 text-white gap-5 text-sm font-arya space-x-2 font-bold space-y-2 max-[450px]:text-sm max-[450px]:gap-3 max-[450px]:space-y-0 max-[450px]:flex-wrap flex items-center">
-                                <span class="truncate">🔥 Today Offer</span>                            
-                                <span class="truncate">📊 Diet Chart</span>                            
-                                <span class="truncate">💰 Cod Available</span>                            
+                    <div
+                        class="flex-1 justify-around  gap-2 min-w-0 text-white gap-5 text-sm font-arya space-x-2 font-bold space-y-2 max-[450px]:text-sm max-[450px]:gap-3 max-[450px]:space-y-0 max-[450px]:flex-wrap flex items-center">
+                        <span class="truncate">🔥 Today Offer</span>
+                        <span class="truncate">📊 Diet Chart</span>
+                        <span class="truncate">💰 Cod Available</span>
                     </div>
 
                     <!-- Right Side: Timer & Button -->
@@ -2177,7 +2182,9 @@
                                 <span>Order Now</span>
                                 <span class="animate-pulse">🔥</span>
                             </span>
-                            <div class="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+                            </div>
                         </button>
                     </div>
                 </div>
@@ -2192,7 +2199,7 @@
             <div
                 class="notification-logo w-14 h-14 rounded-full flex items-center justify-center border-2 border-brand-light border-opacity-30 overflow-visible max-[450px]:w-12 max-[450px]:h-12">
                 <img src="./image/product.avif" alt="">
-                
+
             </div>
             <div class="notification-content">
                 <div id="notificationName" class="notification-name">रमेश कुमार</div>
@@ -2204,10 +2211,10 @@
     </div>
     <script src="./data.js"></script>
     <script>
+    // import {notifications} from ("data.js")
         // Notification system variables
         let currentNotificationIndex = 0;
         let notificationInterval;
-
         // Product purchase notifications data (fallback if data.js not loaded)
         const fallbackNotifications = [
             { name: 'रमेश कुमार', city: 'दिल्ली', message: 'ने अपने पिता के लिए यह प्रोडक्ट खरीदा', icon: 'R' },
@@ -2222,6 +2229,8 @@
             { name: 'रीता देवी', city: 'कानपुर', message: 'ने सुनाई न देने की समस्या के लिए यह प्रोडक्ट खरीदा', icon: 'R' }
         ];
 
+        // console.log(notifications)
+
         // Get notifications data (from external file or fallback)
         const getNotifications = () => {
             try {
@@ -2230,6 +2239,8 @@
                 return fallbackNotifications;
             }
         };
+
+        console.log(getNotifications());
 
         // Show notification function
         function showNotification() {

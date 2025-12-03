@@ -1,4 +1,5 @@
-export const notifications = [
+// Method 1: Global Variable (Current approach - works with regular script t
+window.notifications = [
             { name: 'रमेश कुमार', city: 'दिल्ली', message: 'ने अपने पिता के लिए यह प्रोडक्ट खरीदा', icon: 'R' },
             { name: 'सुरेश शर्मा', city: 'मुंबई', message: 'को यह प्रोडक्ट बहुत पसंद आया', icon: 'S' },
             { name: 'प्रिया वर्मा', city: 'पुणे', message: 'ने अभी-अभी ऑर्डर किया', icon: 'P' },
@@ -77,3 +78,4 @@ export const notifications = [
             { name: 'रमेश चंद्र', city: 'लाडवा', message: 'को यह तेल वरदान लगा', icon: 'R' },
             { name: 'कृष्णा जी', city: 'थानेसर', message: 'ने डबल पैक ऑर्डर किया', icon: 'K' }
         ];
+
